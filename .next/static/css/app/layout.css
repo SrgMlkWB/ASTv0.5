@@ -780,9 +780,6 @@ video {
 .w-\[1\.2rem\] {
   width: 1.2rem;
 }
-.w-auto {
-  width: auto;
-}
 .w-full {
   width: 100%;
 }
@@ -806,6 +803,9 @@ video {
 }
 .max-w-md {
   max-width: 28rem;
+}
+.flex-1 {
+  flex: 1 1 0%;
 }
 .flex-shrink-0 {
   flex-shrink: 0;
@@ -973,9 +973,6 @@ video {
 }
 .rounded-sm {
   border-radius: calc(var(--radius) - 4px);
-}
-.rounded-xl {
-  border-radius: 0.75rem;
 }
 .border {
   border-width: 1px;
@@ -1256,10 +1253,6 @@ video {
 .ring-offset-background {
   --tw-ring-offset-color: hsl(var(--background));
 }
-.drop-shadow-\[0_4px_6px_rgba\(0\2c 0\2c 0\2c 0\.25\)\] {
-  --tw-drop-shadow: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -1307,6 +1300,23 @@ video {
 }
 .duration-300 {
   animation-duration: 300ms;
+}
+ 
+.file\:border-0::file-selector-button {
+  border-width: 0px;
+}
+ 
+.file\:bg-transparent::file-selector-button {
+  background-color: transparent;
+}
+ 
+.file\:text-sm::file-selector-button {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+ 
+.file\:font-medium::file-selector-button {
+  font-weight: 500;
 }
  
 .placeholder\:text-muted-foreground::-moz-placeholder {
@@ -1426,6 +1436,14 @@ video {
  
 .disabled\:opacity-50:disabled {
   opacity: 0.5;
+}
+ 
+.peer:disabled ~ .peer-disabled\:cursor-not-allowed {
+  cursor: not-allowed;
+}
+ 
+.peer:disabled ~ .peer-disabled\:opacity-70 {
+  opacity: 0.7;
 }
  
 .data-\[disabled\]\:pointer-events-none[data-disabled] {

@@ -26,13 +26,14 @@ export function Navbar() {
             <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
               <div className="relative w-24 h-16 overflow-hidden">
                 <Image
-                  src="https://mma.prnewswire.com/media/1895822/WINBACK_Logo.jpg?p=facebook"
+                  // src="https://mma.prnewswire.com/media/1895822/WINBACK_Logo.jpg?p=facebook"
+                  src="/assets/icons/logo_3.png"
                   alt="Winback Logo"
                   fill
                   className="object-contain object-left"
                 />
               </div>
-              <span className="text-xl font-bold">ASSIST</span>
+              {/* <span className="text-xl font-bold">ASSIST</span> */}
             </Link>
             <div className="ml-10 flex items-center space-x-4">
               {links.map((link) => {

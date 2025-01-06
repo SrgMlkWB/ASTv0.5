@@ -44,14 +44,8 @@ const allDevices = [
 export default function HomePage() {
   return (
     <div className="pb-16">
-      <header className="p-4 flex items-center justify-between">
-        <Image
-          src="https://i.ibb.co/m5BjGLj/WBassist.png"
-          alt="Winback Assist"
-          width={120}
-          height={40}
-          className="h-10 w-auto drop-shadow-[0_4px_6px_rgba(0,0,0,0.25)]"
-        />
+      <header className="p-4 flex items-center">
+        <div className="flex-1"></div>
         <div className="flex items-center space-x-4">
           <button className="p-2">
             <Search className="h-6 w-6" />
