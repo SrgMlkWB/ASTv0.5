@@ -1,16 +1,15 @@
-import './globals.css'
+import type { Metadata } from "next"
 import { Inter } from 'next/font/google'
-import { Navbar } from '@/components/navbar'
-import { ThemeProvider } from '@/components/theme-provider'
+import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { Navbar } from "@/components/navbar"
+import { BottomNav } from "@/components/bottom-nav"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
-  title: 'ASSIST',
-  description: 'ASSIST Troubleshooting Application',
-  manifest: '/manifest.json',
-  themeColor: '#F18841',
-  viewport: 'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover'
+export const metadata: Metadata = {
+  title: "ASSIST trouble shooting",
+  description: "Medical device troubleshooting application",
 }
 
 export default function RootLayout({
@@ -20,18 +19,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#F18841" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
-      </head>
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="min-h-screen bg-background pb-20">
-            <main className="container mx-auto px-4 py-6">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex flex-col min-h-screen bg-background text-foreground">
+            <Navbar />
+            <main className="flex-grow pb-16 md:pb-0">
               {children}
             </main>
-            <Navbar />
+            <BottomNav />
           </div>
         </ThemeProvider>
       </body>
