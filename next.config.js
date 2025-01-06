@@ -9,6 +9,9 @@ const withPWA = require('next-pwa')({
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ['i.ibb.co', 'm3.winback.store', 'm1.winback.store'],
+  },
 };
 
 module.exports = withPWA(nextConfig);
