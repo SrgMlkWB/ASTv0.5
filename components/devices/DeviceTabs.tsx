@@ -19,21 +19,22 @@ export function DeviceTabs() {
 
   return (
     <Tabs defaultValue="info" className="w-full">
-      <div className="border-b">
-        <TabsList className="max-w-screen-xl mx-auto">
-          <TabsTrigger value="info" className="flex-1">Info</TabsTrigger>
-          <TabsTrigger value="activity" className="flex-1">Activity</TabsTrigger>
-          <TabsTrigger value="resources" className="flex-1">Resources</TabsTrigger>
-        </TabsList>
+      <div className="sticky top-0 z-10 bg-background border-b">
+        <div className="container mx-auto px-4">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="info">Info</TabsTrigger>
+            <TabsTrigger value="activity">Activity</TabsTrigger>
+            <TabsTrigger value="resources">Resources</TabsTrigger>
+          </TabsList>
+        </div>
       </div>
-      
-      <div className="max-w-screen-xl mx-auto p-4">
+      <div className="container mx-auto px-4 py-6">
         <TabsContent value="info">
           <DeviceInfo {...deviceInfo} />
         </TabsContent>
         <TabsContent value="activity">
           <DeviceActivity />
-        </TabsContent>s
+        </TabsContent>
         <TabsContent value="resources">
           <DeviceResources />
         </TabsContent>

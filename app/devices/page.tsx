@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import Link from "next/link"
 import { DeviceTabs } from "@/components/devices/DeviceTabs"
 import { FAQContactModal } from "@/components/faq-contact-modal"
@@ -9,18 +8,19 @@ import { HelpCircle } from 'lucide-react'
 
 export default function DevicesPage() {
   return (
-    <div>
-      <header className="p-4 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <Link href="/" className="text-orange-500">← My devices</Link>
-          {/* <h1 className="text-xl font-semibold">My Devices</h1> */}
+    <div className="min-h-screen bg-background">
+      <div className="sticky top-0 z-20 bg-background border-b">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="text-orange-500 hover:underline">
+            ← My devices
+          </Link>
+          <FAQContactModal>
+            <Button variant="ghost" size="icon" className="h-9 w-9">
+              <HelpCircle className="h-5 w-5" />
+            </Button>
+          </FAQContactModal>
         </div>
-        <FAQContactModal>
-          <Button variant="ghost" size="icon">
-            <HelpCircle className="h-5 w-5" />
-          </Button>
-        </FAQContactModal>
-      </header>
+      </div>
       <DeviceTabs />
     </div>
   )
