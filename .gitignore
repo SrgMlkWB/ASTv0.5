@@ -31,3 +31,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# cache files
+.next/cache/
+*.pack
+*.pack.old
+
+# large binary files
+*.node

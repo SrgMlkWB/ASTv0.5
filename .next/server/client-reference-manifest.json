@@ -277,6 +277,10 @@
     }
   },
   "entryCSSFiles": {
+    "/Users/sergei/CODE LOCAL/CODING/LocalASSIST/ASTv0.5/app/page": {
+      "modules": [],
+      "files": []
+    },
     "/Users/sergei/CODE LOCAL/CODING/LocalASSIST/ASTv0.5/app/layout": {
       "modules": [
         "/Users/sergei/CODE LOCAL/CODING/LocalASSIST/ASTv0.5/app/globals.css",
@@ -285,10 +289,6 @@
       "files": [
         "static/css/app/layout.css"
       ]
-    },
-    "/Users/sergei/CODE LOCAL/CODING/LocalASSIST/ASTv0.5/app/page": {
-      "modules": [],
-      "files": []
     }
   }
 }
