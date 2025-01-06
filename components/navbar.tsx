@@ -26,11 +26,11 @@ export function Navbar() {
             <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
               <div className="relative w-24 h-16 overflow-hidden">
                 <Image
-                  // src="https://mma.prnewswire.com/media/1895822/WINBACK_Logo.jpg?p=facebook"
                   src="/assets/icons/logo_3.png"
                   alt="Winback Logo"
                   fill
-                  className="object-contain object-left"
+                  className="object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)]"
+                  priority
                 />
               </div>
               {/* <span className="text-xl font-bold">ASSIST</span> */}
