@@ -79,34 +79,22 @@ export function DeviceTabs() {
       </div>
       <div className="px-4 py-6">
         <TabsContent value="info">
-          <div className="relative">
-            <button 
-              onClick={previousDevice}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md"
-              disabled={devices.length <= 1}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentDevice}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.3 }}
             >
-              <ChevronLeft className="h-6 w-6 text-gray-600" />
-            </button>
-            <button 
-              onClick={nextDevice}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md"
-              disabled={devices.length <= 1}
-            >
-              <ChevronRight className="h-6 w-6 text-gray-600" />
-            </button>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentDevice}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.3 }}
-                className="px-8"
-              >
-                <DeviceInfo {...devices[currentDevice]} />
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              <DeviceInfo 
+                {...devices[currentDevice]} 
+                onNext={nextDevice}
+                onPrevious={previousDevice}
+                hasMultipleDevices={devices.length > 1}
+              />
+            </motion.div>
+          </AnimatePresence>
         </TabsContent>
         <TabsContent value="activity">
           <DeviceActivity />
