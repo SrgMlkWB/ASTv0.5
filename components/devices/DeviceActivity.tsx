@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react'
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -15,7 +15,9 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
+  Tooltip
 } from "recharts"
+import { ChartDetailModal } from "./ChartDetailModal"
 
 const treatmentData = [
   { day: "Fri", treatments: 0 },
@@ -60,9 +62,21 @@ const protocols = [
 export function DeviceActivity() {
   const [selectedDate, setSelectedDate] = useState("8 Jan. - 31 Jan. 2024")
   const [activeTab, setActiveTab] = useState("charts")
+  const [selectedChart, setSelectedChart] = useState<{
+    type: "bar" | "pie";
+    data: any[];
+    title: string;
+  } | null>(null)
 
   return (
     <div className="space-y-6">
+      <ChartDetailModal
+        isOpen={!!selectedChart}
+        onClose={() => setSelectedChart(null)}
+        chartType={selectedChart?.type || "bar"}
+        data={selectedChart?.data || []}
+        title={selectedChart?.title || ""}
+      />
       <div className="flex space-x-4">
         <Button
           variant="outline"
@@ -122,7 +136,19 @@ export function DeviceActivity() {
           </div>
 
           <div className="bg-white rounded-xl p-6 border border-gray-100">
-            <h3 className="text-base font-medium text-gray-900 mb-6">Number of treatments (%)</h3>
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-base font-medium text-gray-900">Number of treatments (%)</h3>
+              <button
+                onClick={() => setSelectedChart({
+                  type: "bar",
+                  data: treatmentData,
+                  title: "Number of treatments (%)"
+                })}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <Maximize2 className="h-4 w-4 text-gray-500" />
+              </button>
+            </div>
             <div className="h-[200px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={treatmentData} margin={{ top: 0, right: 0, bottom: 0, left: -15 }}>
@@ -137,6 +163,13 @@ export function DeviceActivity() {
                     tickLine={false}
                     tick={{ fontSize: 12, fill: '#6B7280' }}
                   />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "white",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "0.5rem",
+                    }}
+                  />
                   <Bar
                     dataKey="treatments"
                     fill="#F18841"
@@ -149,7 +182,19 @@ export function DeviceActivity() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white rounded-xl p-6 border border-gray-100">
-              <h3 className="text-base font-medium text-gray-900 mb-6">Mode usage (%)</h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-base font-medium text-gray-900">Mode usage (%)</h3>
+                <button
+                  onClick={() => setSelectedChart({
+                    type: "pie",
+                    data: modeData,
+                    title: "Mode usage (%)"
+                  })}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <Maximize2 className="h-4 w-4 text-gray-500" />
+                </button>
+              </div>
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -166,6 +211,13 @@ export function DeviceActivity() {
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "white",
+                        border: "1px solid #e5e7eb",
+                        borderRadius: "0.5rem",
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
@@ -180,7 +232,19 @@ export function DeviceActivity() {
             </div>
 
             <div className="bg-white rounded-xl p-6 border border-gray-100">
-              <h3 className="text-base font-medium text-gray-900 mb-6">Accessory usage (%)</h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-base font-medium text-gray-900">Accessory usage (%)</h3>
+                <button
+                  onClick={() => setSelectedChart({
+                    type: "pie",
+                    data: accessoryData,
+                    title: "Accessory usage (%)"
+                  })}
+                  className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <Maximize2 className="h-4 w-4 text-gray-500" />
+                </button>
+              </div>
               <div className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -197,6 +261,13 @@ export function DeviceActivity() {
                         <Cell key={`cell-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "white",
+                        border: "1px solid #e5e7eb",
+                        borderRadius: "0.5rem",
+                      }}
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </div>
@@ -216,9 +287,14 @@ export function DeviceActivity() {
           {protocols.map((protocol) => (
             <div key={protocol.id} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
               <div className="p-4 border-b border-gray-100">
-                <h3 className="text-base font-medium text-gray-900">
-                  Protocol {protocol.id} - {protocol.time}
-                </h3>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                  <h3 className="text-base font-medium text-gray-900">
+                    Protocol {protocol.id}
+                  </h3>
+                  <div className="mt-1 sm:mt-0 text-sm text-gray-500">
+                    {protocol.time}
+                  </div>
+                </div>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
