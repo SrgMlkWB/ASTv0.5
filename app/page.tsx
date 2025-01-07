@@ -36,7 +36,7 @@ const promotionalProducts = [
   {
     id: "4",
     name: "Pack Doki Tape",
-    image: "/assets/products/DOKI_TAPE.jpg",
+    image: "/assets/products/DOKI_TAPE1.jpg",
     price: "74,80 €",
     originalPrice: "88,00 €"
   }

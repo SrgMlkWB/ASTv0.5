@@ -25,8 +25,8 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
-                <div className="relative w-40 h-16 overflow-hidden flex items-center justify-center">
+              <Link href="/" className="flex-shrink-0">
+                <div className="relative w-40 h-16 flex items-center justify-center">
                   <Image
                     src="/assets/icons/logo_3.png"
                     alt="WinbackASSIST"
@@ -39,13 +39,14 @@ export function Navbar() {
               <div className="ml-10 flex items-center space-x-4">
                 {links.map((link) => {
                   const Icon = link.icon
+                  const isActive = pathname === link.href
                   return (
                     <Link
                       key={link.name}
                       href={link.href}
                       className={cn(
-                        "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium hover:bg-white/10",
-                        pathname === link.href ? "bg-white/20" : ""
+                        "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                        isActive ? "bg-white/20" : "hover:bg-white/10"
                       )}
                     >
                       <Icon className="h-5 w-5" />
@@ -65,17 +66,18 @@ export function Navbar() {
         <div className="flex items-center justify-around h-16">
           {links.map((link) => {
             const Icon = link.icon
+            const isActive = pathname === link.href
             return (
               <Link
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "flex flex-col items-center justify-center space-y-1 px-3 py-2 rounded-md text-xs font-medium hover:bg-white/10 w-full",
-                  pathname === link.href ? "bg-white/20" : ""
+                  "flex flex-col items-center justify-center w-full h-full transition-colors",
+                  isActive ? "bg-white text-[#F18841]" : "text-white hover:bg-white/10"
                 )}
               >
                 <Icon className="h-5 w-5" />
-                <span className="whitespace-nowrap">{link.name}</span>
+                <span className="text-xs mt-1">{link.name}</span>
               </Link>
             )
           })}
