@@ -24,16 +24,15 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
-              <div className="relative w-24 h-16 overflow-hidden">
+              <div className="relative w-40 h-16 overflow-hidden flex items-center justify-center">
                 <Image
                   src="/assets/icons/logo_3.png"
-                  alt="Winback Logo"
+                  alt="WinbackASSIST"
                   fill
-                  className="object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)]"
+                  className="object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)] scale-120"
                   priority
                 />
               </div>
-              {/* <span className="text-xl font-bold">ASSIST</span> */}
             </Link>
             <div className="ml-10 flex items-center space-x-4">
               {links.map((link) => {

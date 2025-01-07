@@ -20,7 +20,7 @@ const devices: Device[] = [
   {
     id: "back4",
     name: "BACK4",
-    image: "https://m1.winback.store/15357-thickbox_default/back-3tx-winback.jpg",
+    image: "/assets/devices/BACK4.jpg",
     version: "3.15",
     serialNumber: "16578647U8O9P8",
     config: "12.2",
@@ -30,22 +30,12 @@ const devices: Device[] = [
   {
     id: "back3tx",
     name: "BACK3TX",
-    image: "https://m1.winback.store/15357-thickbox_default/back-3tx-winback.jpg",
+    image: "/assets/devices/BACK3TX.jpg",
     version: "3.15",
     serialNumber: "98765432ABC",
     config: "11.8",
     type: "2",
     subVersion: "3.10"
-  },
-  {
-    id: "back3",
-    name: "BACK3",
-    image: "/placeholder.svg?height=600&width=400",
-    version: "3.00",
-    serialNumber: "45678901XYZ",
-    config: "10.5",
-    type: "1",
-    subVersion: "3.00"
   }
 ]
 
