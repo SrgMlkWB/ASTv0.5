@@ -182,7 +182,7 @@ export function DeviceActivity() {
           }`}
           onClick={() => setActiveTab("protocols")}
         >
-          Ressources
+          Protocols
         </Button>
       </div>
 
@@ -394,13 +394,19 @@ export function DeviceActivity() {
           </div>
         </div>
       ) : (
-        <div className="space-y-6">
-          <div className="w-full h-screen max-h-[600px] relative">
-            <iframe
-              src="https://www.manualslib.fr/manual/637603/Winback-Back4.html"
-              className="w-full h-full rounded-xl border border-gray-100"
-            />
-          </div>
+        <div className="p-4 space-y-6">
+          <Card className="card p-6">
+            <h2 className="text-2xl font-bold mb-4">Nos domaines d'application</h2>
+            <p className="mb-4">
+              Nous développons continuellement nos connaissances dans 4 domaines d'application avec un objectif: vous permettre d'améliorer la vie de vos patients et clients, que vous soyez kinésithérapeute, masseur, coach sportif, ostéopathe, chiropracteur, sage-femme, gynécologue, vétérinaire, spécialiste bien-être.
+            </p>
+            <ul className="list-disc pl-5">
+              <li>Rééducation</li>
+              <li>Sport</li>
+              <li>Wo(men)</li>
+              <li>Équin & petits animaux</li>
+            </ul>
+          </Card>
         </div>
       )}
     </div>

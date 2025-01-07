@@ -10,7 +10,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['i.ibb.co', 'm3.winback.store', 'm1.winback.store', 'mma.prnewswire.com'],
+    domains: ['i.ibb.co', 'm3.winback.store', 'm1.winback.store', 'mma.prnewswire.com', 'winback-academy.org'],
   },
 };
 

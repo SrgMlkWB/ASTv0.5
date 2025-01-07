@@ -3,7 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DeviceInfo } from "./DeviceInfo"
 import { DeviceActivity } from "./DeviceActivity"
-import { Protocols } from "./protocols"
+import { DeviceRessources } from "./DeviceRessources"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -100,7 +100,7 @@ export function DeviceTabs() {
           <DeviceActivity />
         </TabsContent>
         <TabsContent value="protocols">
-          <Protocols />
+          <DeviceRessources />
         </TabsContent>
       </div>
     </Tabs>

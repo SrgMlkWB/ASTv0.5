@@ -2,7 +2,7 @@
 
 import { FileText } from "lucide-react"
 
-export function DeviceResources() {
+export function DeviceRessources() {
   return (
     <div className="space-y-6">
       <div className="flex items-center mb-4">
