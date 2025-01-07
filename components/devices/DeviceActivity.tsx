@@ -147,7 +147,7 @@ export function DeviceActivity() {
           }`}
           onClick={() => setActiveTab("protocols")}
         >
-          My protocols
+          Ressources
         </Button>
       </div>
 
@@ -344,58 +344,12 @@ export function DeviceActivity() {
         </div>
       ) : (
         <div className="space-y-6">
-          {protocols.map((protocol) => (
-            <div key={protocol.id} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
-              <div className="p-4 border-b border-gray-100">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                  <h3 className="text-base font-medium text-gray-900">
-                    Protocol {protocol.id}
-                  </h3>
-                  <div className="mt-1 sm:mt-0 text-sm text-gray-500">
-                    {protocol.time}
-                  </div>
-                </div>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="bg-gray-50">
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Step</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Way</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mode</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Intensity</th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {protocol.steps.map((step, index) => (
-                      <tr key={index} className="hover:bg-gray-50">
-                        <td className="px-4 py-3 text-sm text-gray-900">{step.step}</td>
-                        <td className="px-4 py-3 text-sm text-gray-900">{step.way}</td>
-                        <td className="px-4 py-3">
-                          <span
-                            className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                              step.mode === "CET"
-                                ? "bg-[#F18841] text-white"
-                                : step.mode === "RET"
-                                ? "bg-blue-500 text-white"
-                                : "bg-cyan-500 text-white"
-                            }`}
-                          >
-                            {step.mode}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-sm text-gray-900">{step.type}</td>
-                        <td className="px-4 py-3 text-sm text-gray-900">{step.intensity}</td>
-                        <td className="px-4 py-3 text-sm text-gray-900">{step.duration}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          ))}
+          <div className="w-full h-screen max-h-[600px] relative">
+            <iframe
+              src="https://www.manualslib.fr/manual/637603/Winback-Back4.html"
+              className="w-full h-full rounded-xl border border-gray-100"
+            />
+          </div>
         </div>
       )}
       <ProtocolTable />

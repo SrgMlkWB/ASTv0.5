@@ -114,7 +114,7 @@ export default function ShopPage() {
           </div>
 
           <SearchAndFilter />
-          <ProductList products={products} />
+          <ProductList />
         </main>
       </div>
     </ShopProvider>
