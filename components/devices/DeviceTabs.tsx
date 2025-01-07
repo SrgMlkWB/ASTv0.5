@@ -14,6 +14,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
 import { Button } from "@/components/ui/button"
+import { DateRangePicker } from "@/components/ui/date-range-picker"
 
 const devices = [
   {
@@ -281,8 +282,14 @@ export function DeviceTabs() {
             hasMultipleDevices={devices.length > 1}
           />
         </TabsContent>
-        <TabsContent value="activity">
-          <DeviceActivity />
+        <TabsContent value="activity" className="mt-4">
+          <div className="space-y-4">
+            <div className="flex justify-between items-center">
+              <h2 className="text-2xl font-bold">Activité de l'appareil</h2>
+              <DateRangePicker className="w-[300px]" />
+            </div>
+            <DeviceActivity />
+          </div>
         </TabsContent>
         <TabsContent value="protocols">
           <DeviceRessources />

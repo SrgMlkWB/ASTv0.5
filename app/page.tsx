@@ -153,21 +153,19 @@ export default function HomePage() {
           {myDevices.map((device) => (
             <Card 
               key={device.name} 
-              className="cursor-pointer hover:shadow-lg transition-shadow"
+              className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => setSelectedDevice(device)}
             >
-              <div className="aspect-square p-4">
-                <div className="relative w-full h-full">
-                  <Image
-                    src={device.image}
-                    alt={device.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+              <div className="relative aspect-[4/3] md:aspect-square bg-gray-50">
+                <Image
+                  src={device.image}
+                  alt={device.name}
+                  fill
+                  className="object-contain p-4"
+                />
               </div>
-              <div className="p-4 pt-0 text-center">
-                <h3 className="font-semibold">{device.name}</h3>
+              <div className="p-4">
+                <h3 className="font-semibold text-sm mb-2 line-clamp-2">{device.name}</h3>
                 <p className="text-sm text-gray-500">{device.version}</p>
               </div>
             </Card>
@@ -204,21 +202,19 @@ export default function HomePage() {
           {allDevices.map((device) => (
             <Card 
               key={device.name} 
-              className="cursor-pointer hover:shadow-lg transition-shadow"
+              className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => setSelectedDevice(device)}
             >
-              <div className="aspect-square p-4">
-                <div className="relative w-full h-full">
-                  <Image
-                    src={device.image}
-                    alt={device.name}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+              <div className="relative aspect-[4/3] md:aspect-square bg-gray-50">
+                <Image
+                  src={device.image}
+                  alt={device.name}
+                  fill
+                  className="object-contain p-4"
+                />
               </div>
-              <div className="p-4 pt-0 text-center">
-                <h3 className="font-semibold">{device.name}</h3>
+              <div className="p-4">
+                <h3 className="font-semibold text-sm mb-2 line-clamp-2">{device.name}</h3>
                 <p className="text-sm text-gray-500">{device.version}</p>
               </div>
             </Card>
