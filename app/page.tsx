@@ -29,7 +29,7 @@ const promotionalProducts = [
   {
     id: "3",
     name: "Pack consommables TECAR",
-    image: "/assets/products/PACK_TECAR.jpg",
+    image: "/assets/products/PACK_TECAR1.jpg",
     price: "184,45 €",
     originalPrice: "217,00 €"
   },
@@ -117,16 +117,16 @@ export default function HomePage() {
                 })}
               >
                 <Card className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow">
-                  <div className="relative aspect-[4/3] md:aspect-square bg-gray-50">
+                  <div className="relative aspect-square w-full">
                     <Image
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-contain p-4"
+                      className="object-cover"
                     />
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold text-sm mb-2 line-clamp-2">{product.name}</h3>
+                    <h3 className="font-semibold text-sm mb-2 h-10 line-clamp-2">{product.name}</h3>
                     <div className="flex items-center gap-2">
                       <span className="text-orange-500 font-bold">{product.price}</span>
                       {product.originalPrice && (
@@ -156,16 +156,16 @@ export default function HomePage() {
               className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => setSelectedDevice(device)}
             >
-              <div className="relative aspect-[4/3] md:aspect-square bg-gray-50">
+              <div className="relative aspect-square w-full">
                 <Image
                   src={device.image}
                   alt={device.name}
                   fill
-                  className="object-contain p-4"
+                  className="object-cover"
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-semibold text-sm mb-2 line-clamp-2">{device.name}</h3>
+                <h3 className="font-semibold text-sm mb-2 h-10 line-clamp-2">{device.name}</h3>
                 <p className="text-sm text-gray-500">{device.version}</p>
               </div>
             </Card>
@@ -205,16 +205,16 @@ export default function HomePage() {
               className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => setSelectedDevice(device)}
             >
-              <div className="relative aspect-[4/3] md:aspect-square bg-gray-50">
+              <div className="relative aspect-square w-full">
                 <Image
                   src={device.image}
                   alt={device.name}
                   fill
-                  className="object-contain p-4"
+                  className="object-cover"
                 />
               </div>
               <div className="p-4">
-                <h3 className="font-semibold text-sm mb-2 line-clamp-2">{device.name}</h3>
+                <h3 className="font-semibold text-sm mb-2 h-10 line-clamp-2">{device.name}</h3>
                 <p className="text-sm text-gray-500">{device.version}</p>
               </div>
             </Card>
