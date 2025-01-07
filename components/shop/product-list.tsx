@@ -49,12 +49,19 @@ export function ProductList() {
             <Badge className="absolute left-2 top-2 bg-orange-500">{product.badge}</Badge>
           )}
           <div className="p-4">
-            <h3 className="text-lg font-semibold">{product.name}</h3>
-            <p className="text-sm text-gray-500">{product.category}</p>
+            <h3 className="text-lg font-semibold line-clamp-2">{product.name}</h3>
+            <p className="text-sm text-gray-500 mt-1 line-clamp-2">{product.description}</p>
             <div className="mt-4 flex items-center justify-between">
-              <span className="text-lg font-bold">
-                {product.price.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}
-              </span>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold">
+                  {product.price.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}
+                </span>
+                {product.originalPrice && (
+                  <span className="text-sm text-gray-500 line-through">
+                    {product.originalPrice.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })}
+                  </span>
+                )}
+              </div>
               <Button 
                 size="sm" 
                 className="bg-orange-500 hover:bg-orange-600"
@@ -64,6 +71,11 @@ export function ProductList() {
                 Ajouter
               </Button>
             </div>
+            {product.reference && (
+              <p className="text-sm text-gray-500 mt-2">
+                Réf: {product.reference}
+              </p>
+            )}
           </div>
         </motion.div>
       ))}

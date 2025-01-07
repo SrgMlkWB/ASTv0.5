@@ -5,6 +5,7 @@ import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { useShop } from "@/context/shop-context"
 import { Badge } from "../ui/badge"
+import { NotificationsPopover } from "@/components/notifications/notifications-popover"
 
 export function ShopHeader() {
   const { 
@@ -34,6 +35,7 @@ export function ShopHeader() {
           </div>
         </div>
         <div className="flex items-center space-x-4">
+          <NotificationsPopover />
           <Button variant="ghost" size="icon" className="relative">
             <ShoppingCart className="h-5 w-5" />
             {cartItemCount > 0 && (

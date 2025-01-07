@@ -19,47 +19,70 @@ export function Navbar() {
   const pathname = usePathname()
 
   return (
-    <nav className="bg-[#F18841] text-white hidden md:block">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
-              <div className="relative w-40 h-16 overflow-hidden flex items-center justify-center">
-                <Image
-                  src="/assets/icons/logo_3.png"
-                  alt="WinbackASSIST"
-                  fill
-                  className="object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)] scale-120"
-                  priority
-                />
+    <>
+      {/* Desktop Navigation */}
+      <nav className="bg-[#F18841] text-white hidden md:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
+                <div className="relative w-40 h-16 overflow-hidden flex items-center justify-center">
+                  <Image
+                    src="/assets/icons/logo_3.png"
+                    alt="WinbackASSIST"
+                    fill
+                    className="object-contain drop-shadow-[0_4px_4px_rgba(0,0,0,0.3)] scale-120"
+                    priority
+                  />
+                </div>
+              </Link>
+              <div className="ml-10 flex items-center space-x-4">
+                {links.map((link) => {
+                  const Icon = link.icon
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className={cn(
+                        "flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium hover:bg-white/10",
+                        pathname === link.href ? "bg-white/20" : ""
+                      )}
+                    >
+                      <Icon className="h-5 w-5" />
+                      <span>{link.name}</span>
+                    </Link>
+                  )
+                })}
               </div>
-            </Link>
-            <div className="ml-10 flex items-center space-x-4">
-              {links.map((link) => {
-                const Icon = link.icon
-                return (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className={cn(
-                      "flex items-center px-3 py-2 rounded-md text-sm font-medium",
-                      pathname === link.href
-                        ? "bg-white text-[#F18841]"
-                        : "text-white hover:bg-[#F18841]/90"
-                    )}
-                  >
-                    <Icon className="h-5 w-5 mr-2" />
-                    {link.name}
-                  </Link>
-                )
-              })}
             </div>
-          </div>
-          <div className="flex items-center">
             <ThemeToggle />
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile Navigation */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-[#F18841] text-white md:hidden z-50">
+        <div className="flex items-center justify-around h-16">
+          {links.map((link) => {
+            const Icon = link.icon
+            return (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={cn(
+                  "flex flex-col items-center justify-center space-y-1 px-3 py-2 rounded-md text-xs font-medium hover:bg-white/10",
+                  pathname === link.href ? "bg-white/20" : ""
+                )}
+              >
+                <Icon className="h-5 w-5" />
+                <span>{link.name}</span>
+              </Link>
+            )
+          })}
+        </div>
+      </nav>
+      {/* Mobile Navigation Spacer */}
+      <div className="h-16 md:hidden" />
+    </>
   )
 }
