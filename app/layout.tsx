@@ -8,8 +8,8 @@ import { BottomNav } from "@/components/bottom-nav"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "ASSIST trouble shooting",
-  description: "Medical device troubleshooting application",
+  title: "WinbackASSIST",
+  description: "Medical device application",
 }
 
 export default function RootLayout({

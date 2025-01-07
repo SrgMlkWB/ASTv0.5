@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useState } from "react"
 
 const products = [
   {
@@ -79,21 +80,33 @@ Compatible avec les appareils : BACK1, BACK3 et BACK3 COLOR, RSHOCK, CRYOBACK, W
 ]
 
 export default function ShopPage() {
+  const [showBanner, setShowBanner] = useState(true)
+
   return (
     <div className="container mx-auto p-4 pb-16">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Boutique Winback</h1>
-        <div className="text-sm text-muted-foreground">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-0">Boutique Winback</h1>
+        <div className="text-xs sm:text-sm text-muted-foreground">
           SAV interne à votre écoute du lundi au vendredi 9h à 17h00
         </div>
       </div>
 
-      <div className="bg-orange-100 p-4 rounded-lg mb-6">
-        <p className="text-center text-orange-800">
-          À partir de 900 € TTC, possibilité de payer en 2 ou 3 fois sans frais par CB (uniquement valable pour les professionnels de santé)
-        </p>
-      </div>
-
+      {showBanner && (
+        <div className="bg-orange-100 p-3 sm:p-4 rounded-lg mb-6 relative">
+          <p className="text-center text-orange-800 text-xs sm:text-sm pr-8">
+            À partir de 900 € TTC, possibilité de payer en 2 ou 3 fois sans frais par CB (uniquement valable pour les professionnels de santé)
+          </p>
+          <button 
+            className="absolute top-1 right-1 text-orange-800 hover:text-orange-600" 
+            onClick={() => setShowBanner(false)}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      )}
       <Tabs defaultValue="all" className="mb-6">
         <TabsList>
           <TabsTrigger value="all">Tous les produits</TabsTrigger>

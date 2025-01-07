@@ -58,156 +58,210 @@ const protocols = [
 ]
 
 export function DeviceActivity() {
-  const [selectedDate, setSelectedDate] = useState(new Date())
-  const [view, setView] = useState<"week" | "day">("week")
+  const [selectedDate, setSelectedDate] = useState("8 Jan. - 31 Jan. 2024")
+  const [activeTab, setActiveTab] = useState("charts")
 
   return (
-    <div className="p-4 space-y-6">
-      <div className="grid grid-cols-2 gap-4">
-        <Card className="card p-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="text-5xl font-bold">263</div>
-            <div className="text-lg text-muted-foreground">minutes</div>
-          </motion.div>
-        </Card>
-        <Card className="card p-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <div className="text-5xl font-bold">19</div>
-            <div className="text-lg text-muted-foreground">Treatments</div>
-          </motion.div>
-        </Card>
+    <div className="space-y-6">
+      <div className="flex space-x-4">
+        <Button
+          variant="outline"
+          className={`flex-1 bg-white border-gray-200 hover:bg-gray-50 text-gray-900 font-medium ${
+            activeTab === "charts" ? "border-[#F18841] text-[#F18841]" : ""
+          }`}
+          onClick={() => setActiveTab("charts")}
+        >
+          Charts
+        </Button>
+        <Button
+          variant="outline"
+          className={`flex-1 bg-white border-gray-200 hover:bg-gray-50 text-gray-900 font-medium ${
+            activeTab === "protocols" ? "border-[#F18841] text-[#F18841]" : ""
+          }`}
+          onClick={() => setActiveTab("protocols")}
+        >
+          My protocols
+        </Button>
       </div>
 
-      <Card className="card p-4">
-        <h3 className="font-medium mb-4">Number of treatments</h3>
-        <ResponsiveContainer width="100%" height={200}>
-          <BarChart data={treatmentData}>
-            <XAxis dataKey="day" />
-            <YAxis />
-            <Bar
-              dataKey="treatments"
-              fill="var(--primary)"
-              radius={[4, 4, 0, 0]}
-            />
-          </BarChart>
-        </ResponsiveContainer>
-      </Card>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card className="card p-4">
-          <h3 className="font-medium mb-4">Mode usage (%)</h3>
-          <Tabs defaultValue="week" className="mb-4">
-            <TabsList>
-              <TabsTrigger value="week" onClick={() => setView("week")}>Week</TabsTrigger>
-              <TabsTrigger value="day" onClick={() => setView("day")}>Day</TabsTrigger>
-            </TabsList>
-          </Tabs>
-          <ResponsiveContainer width="100%" height={200}>
-            <PieChart>
-              <Pie
-                data={modeData}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={80}
-              >
-                {modeData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-        </Card>
-
-        <Card className="card p-4">
-          <h3 className="font-medium mb-4">Accessories usage (%)</h3>
-          <ResponsiveContainer width="100%" height={200}>
-            <PieChart>
-              <Pie
-                data={accessoryData}
-                dataKey="value"
-                nameKey="name"
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={80}
-              >
-                {accessoryData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-        </Card>
+      <div className="flex items-center justify-between bg-white rounded-lg p-4 border border-gray-100">
+        <Button variant="ghost" size="icon" className="text-gray-500">
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
+        <span className="text-sm font-medium text-gray-900">{selectedDate}</span>
+        <Button variant="ghost" size="icon" className="text-gray-500">
+          <ChevronRight className="h-4 w-4" />
+        </Button>
       </div>
 
-      <Card className="card p-4 bg-gray-100 dark:bg-gray-800">
-        <div className="flex items-center justify-between mb-6">
-          <Button variant="ghost" size="icon" className="btn">
-            <ChevronLeft className="h-6 w-6" />
-          </Button>
-          <h2 className="text-xl font-medium">12 Aout 2023</h2>
-          <Button variant="ghost" size="icon" className="btn">
-            <ChevronRight className="h-6 w-6" />
-          </Button>
-        </div>
-
-        {protocols.map((protocol) => (
-          <div key={protocol.id} className="mb-6">
-            <h3 className="text-lg font-medium mb-4">
-              Protocole {protocol.id} - {protocol.time}
-            </h3>
-            <div className="bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <th className="px-4 py-2 text-left">Step</th>
-                    <th className="px-4 py-2 text-left">Way</th>
-                    <th className="px-4 py-2 text-left">Mode</th>
-                    <th className="px-4 py-2 text-left">Type</th>
-                    <th className="px-4 py-2 text-left">Intensity</th>
-                    <th className="px-4 py-2 text-left">Duration</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {protocol.steps.map((step, index) => (
-                    <tr key={index} className="border-b border-gray-200 dark:border-gray-700">
-                      <td className="px-4 py-2">{step.step}</td>
-                      <td className="px-4 py-2">{step.way}</td>
-                      <td className="px-4 py-2">
-                        <span
-                          className={`px-2 py-1 rounded text-sm ${
-                            step.mode === "CET"
-                              ? "bg-[#F18841] text-white"
-                              : step.mode === "RET"
-                              ? "bg-blue-500 text-white"
-                              : "bg-cyan-500 text-white"
-                          }`}
-                        >
-                          {step.mode}
-                        </span>
-                      </td>
-                      <td className="px-4 py-2">{step.type}</td>
-                      <td className="px-4 py-2">{step.intensity}</td>
-                      <td className="px-4 py-2">{step.duration}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+      {activeTab === "charts" ? (
+        <div className="space-y-6">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-white rounded-xl p-6 border border-gray-100">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-center"
+              >
+                <div className="text-4xl font-bold text-gray-900">263</div>
+                <div className="text-sm text-gray-500 mt-1">minutes</div>
+              </motion.div>
+            </div>
+            <div className="bg-white rounded-xl p-6 border border-gray-100">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-center"
+              >
+                <div className="text-4xl font-bold text-gray-900">19</div>
+                <div className="text-sm text-gray-500 mt-1">Treatments</div>
+              </motion.div>
             </div>
           </div>
-        ))}
-      </Card>
+
+          <div className="bg-white rounded-xl p-6 border border-gray-100">
+            <h3 className="text-base font-medium text-gray-900 mb-6">Number of treatments (%)</h3>
+            <div className="h-[200px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={treatmentData} margin={{ top: 0, right: 0, bottom: 0, left: -15 }}>
+                  <XAxis
+                    dataKey="day"
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 12, fill: '#6B7280' }}
+                  />
+                  <YAxis
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 12, fill: '#6B7280' }}
+                  />
+                  <Bar
+                    dataKey="treatments"
+                    fill="#F18841"
+                    radius={[4, 4, 0, 0]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-xl p-6 border border-gray-100">
+              <h3 className="text-base font-medium text-gray-900 mb-6">Mode usage (%)</h3>
+              <div className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={modeData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={80}
+                      paddingAngle={2}
+                      dataKey="value"
+                    >
+                      {modeData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                {modeData.map((item, index) => (
+                  <div key={index} className="flex items-center space-x-2">
+                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
+                    <span className="text-sm text-gray-600">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-6 border border-gray-100">
+              <h3 className="text-base font-medium text-gray-900 mb-6">Accessory usage (%)</h3>
+              <div className="h-[300px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={accessoryData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={80}
+                      paddingAngle={2}
+                      dataKey="value"
+                    >
+                      {accessoryData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Pie>
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="grid grid-cols-2 gap-4 mt-6">
+                {accessoryData.map((item, index) => (
+                  <div key={index} className="flex items-center space-x-2">
+                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }} />
+                    <span className="text-sm text-gray-600">{item.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-6">
+          {protocols.map((protocol) => (
+            <div key={protocol.id} className="bg-white rounded-xl border border-gray-100 overflow-hidden">
+              <div className="p-4 border-b border-gray-100">
+                <h3 className="text-base font-medium text-gray-900">
+                  Protocol {protocol.id} - {protocol.time}
+                </h3>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-gray-50">
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Step</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Way</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mode</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Intensity</th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {protocol.steps.map((step, index) => (
+                      <tr key={index} className="hover:bg-gray-50">
+                        <td className="px-4 py-3 text-sm text-gray-900">{step.step}</td>
+                        <td className="px-4 py-3 text-sm text-gray-900">{step.way}</td>
+                        <td className="px-4 py-3">
+                          <span
+                            className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                              step.mode === "CET"
+                                ? "bg-[#F18841] text-white"
+                                : step.mode === "RET"
+                                ? "bg-blue-500 text-white"
+                                : "bg-cyan-500 text-white"
+                            }`}
+                          >
+                            {step.mode}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3 text-sm text-gray-900">{step.type}</td>
+                        <td className="px-4 py-3 text-sm text-gray-900">{step.intensity}</td>
+                        <td className="px-4 py-3 text-sm text-gray-900">{step.duration}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
