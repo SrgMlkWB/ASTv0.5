@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { ELearningModule } from '../e-learning-module'
 import { 
   Heart, Zap, Shield, UserX, Thermometer, User2, Flame, 
-  Virus, ArrowLeft, Settings, Clock, AlertTriangle, 
+  Bug, ArrowLeft, Settings, Clock, AlertTriangle, 
   Radio, Battery, UserCog 
 } from 'lucide-react'
 import Image from 'next/image'
@@ -76,7 +76,7 @@ const moduleData = {
             </div>
             <div className="flex flex-col items-center text-center space-y-2">
               <div className="p-4 bg-orange-100 rounded-full">
-                <Virus className="h-6 w-6 text-orange-500" />
+                <Bug className="h-6 w-6 text-orange-500" />
               </div>
               <p>CANCER</p>
             </div>
