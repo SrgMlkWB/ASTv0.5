@@ -4,18 +4,25 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DeviceInfo } from "./DeviceInfo"
 import { DeviceActivity } from "./DeviceActivity"
 import { DeviceRessources } from "./DeviceRessources"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { DeviceFAQ } from "./DeviceFAQ"
+import { Info } from "lucide-react"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card"
+import { Button } from "@/components/ui/button"
 
 const devices = [
   {
-    name: "BACK4",
-    serialNumber: "16578647U8O9P8",
+    name: "Back4",
+    serialNumber: "16578647UI8O9P8",
     version: "3.15",
     config: "12.2",
     type: "3",
-    sub: [
+    subDevices: [
       {
         name: "SUB1",
         config: "12.2",
@@ -28,73 +35,251 @@ const devices = [
         type: "3",
         version: "3.15"
       }
-    ]
+    ],
+    specifications: {
+      puissance: "100W",
+      processeurs: "Dual core",
+      frequences: {
+        TECAR: ["300K Hz", "500K Hz", "1000K Hz"],
+        "Hi-TENS": ["2 Hz", "5 Hz", "25 Hz"],
+        "Hi-EMS": ["1500 Hz", "4000 Hz"]
+      }
+    }
   },
   {
     name: "BACK3TX",
-    serialNumber: "98765432ABC",
+    serialNumber: "16578647U8O9P8",
     version: "3.15",
-    config: "11.8",
-    type: "2",
+    config: "12.2",
+    type: "3",
+    specifications: {
+      puissance: "100W",
+      processeurs: "Dual core",
+      frequences: {
+        TECAR: ["300K Hz", "500K Hz", "1000K Hz"],
+        "Hi-TENS": ["2 Hz", "5 Hz", "25 Hz"],
+        "Hi-EMS": ["1500 Hz", "4000 Hz"]
+      },
+      modes: {
+        CET: ["deep", "soft", "dynamic"],
+        "Hi-TENS": ["static", "dynamic"],
+        "Hi-EMS": ["radial", "focal", "dynamic"]
+      },
+      intensite: ["low", "medium", "boost"],
+      normes: [
+        "Fabriqué sous normes ISO13485",
+        "CE médical - MTIC 0068 - FDA-cleared"
+      ],
+      inclus: [
+        "1 poignée TX",
+        "11 électrodes :",
+        "4 CET",
+        "4 RET",
+        "1 Hi-RET",
+        "2 multipolaires",
+        "2 bracelets",
+        "1 câble splitter «Y»",
+        "2 fixed pads",
+        "1 câble TECAR mobile RET",
+        "1 câble TECAR mobile neutre",
+        "1 câble adhésif RET",
+        "1 câble adhésif neutre",
+        "1 poignée de retour",
+        "1 plaque de retour",
+        "1 chariot"
+      ]
+    },
     sub: [
       {
         name: "SUB1",
-        config: "11.8",
-        type: "2",
-        version: "3.15"
+        config: "12.2",
+        type: "3"
       }
     ]
   },
   {
-    name: "HI-TENS",
-    serialNumber: "HITENS123456",
-    version: "3.15",
-    config: "10.5",
-    type: "1",
-    sub: []
+    name: "BACK4",
+    serialNumber: "B4-98765432",
+    version: "4.0",
+    config: "15.3",
+    type: "4",
+    specifications: {
+      puissance: "120W",
+      processeurs: "Quad core",
+      frequences: {
+        TECAR: ["300K Hz", "500K Hz", "1000K Hz", "1500K Hz"],
+        "Hi-TENS": ["2 Hz", "5 Hz", "25 Hz", "50 Hz"],
+        "Hi-EMS": ["1500 Hz", "4000 Hz", "6000 Hz"]
+      },
+      modes: {
+        CET: ["deep", "soft", "dynamic", "pulse"],
+        "Hi-TENS": ["static", "dynamic", "burst"],
+        "Hi-EMS": ["radial", "focal", "dynamic", "wave"]
+      },
+      intensite: ["low", "medium", "boost", "max"],
+      normes: [
+        "Fabriqué sous normes ISO13485",
+        "CE médical - MTIC 0068 - FDA-cleared",
+        "IEC 60601-1"
+      ],
+      inclus: [
+        "1 poignée TX Pro",
+        "13 électrodes :",
+        "5 CET",
+        "5 RET",
+        "1 Hi-RET Pro",
+        "2 multipolaires Pro",
+        "2 bracelets ergonomiques",
+        "1 câble splitter «Y» Pro",
+        "2 fixed pads Pro",
+        "1 câble TECAR mobile RET",
+        "1 câble TECAR mobile neutre",
+        "1 câble adhésif RET Pro",
+        "1 câble adhésif neutre Pro",
+        "1 poignée de retour Pro",
+        "1 plaque de retour Pro",
+        "1 chariot Premium"
+      ]
+    }
+  },
+  {
+    name: "Hi-TENS",
+    serialNumber: "HT-45678901",
+    version: "2.5",
+    config: "8.1",
+    type: "2",
+    specifications: {
+      puissance: "80W",
+      processeurs: "Single core",
+      frequences: {
+        "Hi-TENS": ["2 Hz", "5 Hz", "10 Hz", "25 Hz", "50 Hz", "100 Hz"],
+        "Hi-EMS": ["1000 Hz", "2000 Hz", "4000 Hz"]
+      },
+      modes: {
+        "Hi-TENS": ["static", "dynamic", "burst", "modulation"],
+        "Hi-EMS": ["continuous", "intermittent", "surge"]
+      },
+      intensite: ["low", "medium", "high"],
+      normes: [
+        "Fabriqué sous normes ISO13485",
+        "CE médical - MTIC 0068"
+      ],
+      inclus: [
+        "1 appareil Hi-TENS",
+        "8 électrodes adhésives",
+        "2 câbles de connexion",
+        "1 chargeur",
+        "1 mallette de transport"
+      ]
+    }
   }
 ]
 
 export function DeviceTabs() {
-  const [currentDevice, setCurrentDevice] = useState(0)
+  const [currentDeviceIndex, setCurrentDeviceIndex] = useState(0)
+  const [currentTab, setCurrentTab] = useState("info")
+  const currentDevice = devices[currentDeviceIndex]
 
   const nextDevice = () => {
-    setCurrentDevice((prev) => (prev + 1) % devices.length)
+    setCurrentDeviceIndex((prev) => (prev + 1) % devices.length)
   }
 
   const previousDevice = () => {
-    setCurrentDevice((prev) => (prev - 1 + devices.length) % devices.length)
+    setCurrentDeviceIndex((prev) => (prev - 1 + devices.length) % devices.length)
   }
 
   return (
-    <Tabs defaultValue="info" className="w-full">
-      <div className="sticky top-0 z-10 bg-background border-muted">
-        <div className="px-4">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="info">Info</TabsTrigger>
-            <TabsTrigger value="activity">Activity</TabsTrigger>
-            <TabsTrigger value="protocols">Ressources</TabsTrigger>
-          </TabsList>
-        </div>
+    <Tabs 
+      defaultValue="info" 
+      className="w-full"
+      onValueChange={(value) => setCurrentTab(value)}
+    >
+      <div className="flex justify-center mb-4">
+        <TabsList className="grid w-full max-w-[400px] grid-cols-3">
+          <TabsTrigger value="info">Info</TabsTrigger>
+          <TabsTrigger value="activity">Activity</TabsTrigger>
+          <TabsTrigger value="protocols">Ressources</TabsTrigger>
+        </TabsList>
       </div>
-      <div className="px-4 py-6">
+
+      {currentTab === "info" && (
+        <div className="flex items-center justify-center gap-4 mb-6 px-4">
+          <div className="flex items-center gap-3">
+            <span className="text-xl font-semibold">{currentDevice.name}</span>
+            <HoverCard>
+              <HoverCardTrigger asChild>
+                <Button variant="ghost" size="icon" className="h-8 w-8">
+                  <Info className="h-5 w-5" />
+                </Button>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-[450px] p-4" align="start">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-lg font-bold">CARACTÉRISTIQUES {currentDevice.name}</h3>
+                  <DeviceFAQ />
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <span className="font-semibold">Puissance:</span> {currentDevice.specifications.puissance}
+                  </div>
+                  <div>
+                    <span className="font-semibold">Processeurs:</span> {currentDevice.specifications.processeurs}
+                  </div>
+                  <div>
+                    <span className="font-semibold">Fréquences:</span>
+                    <ul className="ml-4 mt-1">
+                      {Object.entries(currentDevice.specifications.frequences).map(([key, values]) => (
+                        <li key={key}>{key}: {values.join(", ")}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <span className="font-semibold">Modes:</span>
+                    <ul className="ml-4 mt-1">
+                      {currentDevice?.specifications?.modes && 
+                        Object.entries(currentDevice.specifications.modes).map(([key, values]) => (
+                          <li key={key}>{key}: {values.join(", ")}</li>
+                        ))
+                      }
+                    </ul>
+                  </div>
+                  <div>
+                    <span className="font-semibold">Intensité CET, RET et MIX:</span> 
+                    {currentDevice?.specifications?.intensite ? currentDevice.specifications.intensite.join(", ") : "N/A"}
+                  </div>
+                  <div>
+                    <span className="font-semibold">Normes:</span>
+                    <ul className="ml-4 mt-1">
+                      {currentDevice?.specifications?.normes?.map((norme, index) => (
+                        <li key={index}>{norme}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <span className="font-semibold">Inclus:</span>
+                    <ul className="ml-4 mt-1">
+                      {currentDevice?.specifications?.inclus?.map((item, index) => (
+                        <li key={index}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+          </div>
+        </div>
+      )}
+
+      <div>
         <TabsContent value="info">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentDevice}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.3 }}
-            >
-              <DeviceInfo 
-                {...devices[currentDevice]} 
-                onNext={nextDevice}
-                onPrevious={previousDevice}
-                hasMultipleDevices={devices.length > 1}
-              />
-            </motion.div>
-          </AnimatePresence>
+          <DeviceInfo 
+            {...{
+              ...currentDevice,
+              sub: currentDevice.subDevices
+            }}
+            onNext={nextDevice}
+            onPrevious={previousDevice}
+            hasMultipleDevices={devices.length > 1}
+          />
         </TabsContent>
         <TabsContent value="activity">
           <DeviceActivity />
