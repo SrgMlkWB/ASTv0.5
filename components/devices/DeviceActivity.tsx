@@ -22,6 +22,8 @@ import {
 } from "recharts";
 import { ChartDetailModal } from "./ChartDetailModal";
 import { ProtocolTable } from "./protocol-table";
+import { DateRangePicker, DateRange } from "@/components/ui/date-range-picker";
+import { addDays } from "date-fns";
 
 const treatmentData = [
   {
@@ -148,13 +150,23 @@ const protocols = [
 ];
 
 export function DeviceActivity() {
-  const [selectedDate, setSelectedDate] = useState("8 Jan. - 31 Jan. 2024");
+  const [selectedDate, setSelectedDate] = useState<DateRange>({
+    from: addDays(new Date(), -7),
+    to: new Date(),
+  });
   const [activeTab, setActiveTab] = useState("charts");
   const [selectedChart, setSelectedChart] = useState<{
     type: "bar" | "pie";
     data: any[];
     title: string;
   } | null>(null);
+
+  const handleDateSelect = (range: DateRange | undefined) => {
+    if (range) {
+      setSelectedDate(range);
+      // Here you would typically fetch new data for the selected date range
+    }
+  };
 
   return (
     <div className="space-y-8">
@@ -186,16 +198,8 @@ export function DeviceActivity() {
         </Button>
       </div>
 
-      <div className="flex items-center justify-between bg-white rounded-lg p-4 border border-gray-100">
-        <Button variant="ghost" size="icon" className="text-gray-500">
-          <ChevronLeft className="h-4 w-4" />
-        </Button>
-        <span className="text-sm font-medium text-gray-900">
-          {selectedDate}
-        </span>
-        <Button variant="ghost" size="icon" className="text-gray-500">
-          <ChevronRight className="h-4 w-4" />
-        </Button>
+      <div className="bg-white rounded-lg p-4 border border-gray-100">
+        <DateRangePicker onSelect={handleDateSelect} />
       </div>
 
       {activeTab === "charts" ? (

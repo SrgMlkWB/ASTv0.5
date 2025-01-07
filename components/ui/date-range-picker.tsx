@@ -1,9 +1,11 @@
 "use client"
 
 import * as React from "react"
-import { format } from "date-fns"
+import { addDays, format } from "date-fns"
+import { fr } from "date-fns/locale"
 import { Calendar as CalendarIcon } from "lucide-react"
 import { DateRange } from "react-day-picker"
+
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -12,7 +14,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { fr } from 'date-fns/locale'
 
 export function DateRangePicker({
   className,
@@ -22,10 +23,15 @@ export function DateRangePicker({
   onSelect?: (range: DateRange | undefined) => void
 }) {
   const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(),
+    from: addDays(new Date(), -7),
     to: new Date(),
   })
-  const [view, setView] = React.useState<"day" | "month" | "week" | "year">("week")
+
+  React.useEffect(() => {
+    if (date && onSelect) {
+      onSelect(date)
+    }
+  }, [date, onSelect])
 
   return (
     <div className={cn("grid gap-2", className)}>
@@ -35,7 +41,7 @@ export function DateRangePicker({
             id="date"
             variant={"outline"}
             className={cn(
-              "w-full justify-start text-left font-normal",
+              "w-full justify-start text-left font-normal bg-white",
               !date && "text-muted-foreground"
             )}
           >
@@ -43,83 +49,52 @@ export function DateRangePicker({
             {date?.from ? (
               date.to ? (
                 <>
-                  {format(date.from, "d MMMM", { locale: fr })} -{" "}
-                  {format(date.to, "d MMMM", { locale: fr })}
+                  {format(date.from, "d MMM yyyy", { locale: fr })} -{" "}
+                  {format(date.to, "d MMM yyyy", { locale: fr })}
                 </>
               ) : (
-                format(date.from, "d MMMM", { locale: fr })
+                format(date.from, "d MMM yyyy", { locale: fr })
               )
             ) : (
-              <span>Sélectionner une date</span>
+              <span>Sélectionner une période</span>
             )}
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto p-0" align="start">
-          <div className="p-3 space-y-3">
-            <div className="flex rounded-lg p-1 bg-gray-100">
-              <Button
-                variant={view === "day" ? "default" : "ghost"}
-                className="flex-1"
-                onClick={() => setView("day")}
-              >
-                Jour
-              </Button>
-              <Button
-                variant={view === "week" ? "default" : "ghost"}
-                className="flex-1"
-                onClick={() => setView("week")}
-              >
-                Semaine
-              </Button>
-              <Button
-                variant={view === "month" ? "default" : "ghost"}
-                className="flex-1"
-                onClick={() => setView("month")}
-              >
-                Mois
-              </Button>
-              <Button
-                variant={view === "year" ? "default" : "ghost"}
-                className="flex-1"
-                onClick={() => setView("year")}
-              >
-                Année
-              </Button>
-            </div>
-            <Calendar
-              initialFocus
-              mode="range"
-              defaultMonth={date?.from}
-              selected={date}
-              onSelect={(newDate) => {
-                setDate(newDate)
-                onSelect?.(newDate)
-              }}
-              numberOfMonths={2}
-              locale={fr}
-              className="rounded-md border"
-              classNames={{
-                day_selected: "bg-orange-500 text-white hover:bg-orange-400",
-                day_today: "bg-orange-100 text-orange-900",
-                day_range_middle: "bg-orange-100",
-                day_range_end: "bg-orange-500 text-white hover:bg-orange-400",
-                day_range_start: "bg-orange-500 text-white hover:bg-orange-400",
-              }}
-            />
-            <div className="flex justify-end space-x-2">
-              <Button variant="outline" onClick={() => setDate(undefined)}>
-                Annuler
-              </Button>
-              <Button
-                className="bg-orange-500 hover:bg-orange-600"
-                onClick={() => {
-                  // Close popover and handle confirmation
-                }}
-              >
-                Valider
-              </Button>
-            </div>
-          </div>
+          <Calendar
+            initialFocus
+            mode="range"
+            defaultMonth={date?.from}
+            selected={date}
+            onSelect={setDate}
+            numberOfMonths={2}
+            locale={fr}
+            className="rounded-md border"
+            classNames={{
+              day_range_start: "bg-[#F18841] text-white",
+              day_range_end: "bg-[#F18841] text-white",
+              day_range_middle: "bg-[#F18841]/20",
+              day_selected: "bg-[#F18841] text-white hover:bg-[#F18841]/90",
+              day_today: "bg-accent text-accent-foreground",
+              day: "h-9 w-9 p-0 font-normal aria-selected:opacity-100",
+              day_disabled: "text-muted-foreground opacity-50",
+              day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
+              day_hidden: "invisible",
+              caption: "flex justify-center pt-1 relative items-center",
+              caption_label: "text-sm font-medium",
+              nav: "space-x-1 flex items-center",
+              nav_button: cn(
+                "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+              ),
+              nav_button_previous: "absolute left-1",
+              nav_button_next: "absolute right-1",
+              table: "w-full border-collapse space-y-1",
+              head_row: "flex",
+              head_cell: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
+              row: "flex w-full mt-2",
+              cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+            }}
+          />
         </PopoverContent>
       </Popover>
     </div>
