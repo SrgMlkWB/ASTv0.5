@@ -10,8 +10,8 @@ import { HelpCircle } from 'lucide-react'
 export default function DevicesPage() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="sticky top-0 z-20 bg-background border-b">
-        <div className="container mx-auto px-4 flex items-center justify-between">
+      <div className="sticky top-0 z-20 bg-background">
+        <div className="flex items-center justify-between px-4 h-16">
           <Link href="/" className="flex items-center">
             <div className="relative w-24 h-16 overflow-hidden flex items-center justify-center">
               <Image

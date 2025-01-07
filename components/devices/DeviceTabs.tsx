@@ -19,8 +19,8 @@ export function DeviceTabs() {
 
   return (
     <Tabs defaultValue="info" className="w-full">
-      <div className="sticky top-0 z-10 bg-background border-b">
-        <div className="container mx-auto px-4">
+      <div className="sticky top-0 z-10 bg-background border-muted">
+        <div className="px-4">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="info">Info</TabsTrigger>
             <TabsTrigger value="activity">Activity</TabsTrigger>
@@ -28,7 +28,7 @@ export function DeviceTabs() {
           </TabsList>
         </div>
       </div>
-      <div className="container mx-auto px-4 py-6">
+      <div className="px-4 py-6">
         <TabsContent value="info">
           <DeviceInfo {...deviceInfo} />
         </TabsContent>

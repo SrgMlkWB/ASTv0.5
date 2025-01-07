@@ -15,18 +15,70 @@ import {
   ResponsiveContainer,
   XAxis,
   YAxis,
-  Tooltip
+  Tooltip,
+  LineChart,
+  Line,
+  Legend
 } from "recharts"
 import { ChartDetailModal } from "./ChartDetailModal"
 
 const treatmentData = [
-  { day: "Fri", treatments: 0 },
-  { day: "Sat", treatments: 0 },
-  { day: "Sun", treatments: 0 },
-  { day: "Mon", treatments: 0 },
-  { day: "Tue", treatments: 7 },
-  { day: "Wed", treatments: 10 },
-  { day: "Thu", treatments: 2 }
+  {
+    day: "Fri",
+    CET: 3,
+    RET: 2,
+    "HI-TENS": 4,
+    "HI-EMS": 2,
+    average: 8
+  },
+  {
+    day: "Sat",
+    CET: 2,
+    RET: 1,
+    "HI-TENS": 2,
+    "HI-EMS": 1,
+    average: 8
+  },
+  {
+    day: "Sun",
+    CET: 1,
+    RET: 1,
+    "HI-TENS": 2,
+    "HI-EMS": 0,
+    average: 8
+  },
+  {
+    day: "Mon",
+    CET: 2,
+    RET: 2,
+    "HI-TENS": 3,
+    "HI-EMS": 1,
+    average: 8
+  },
+  {
+    day: "Tue",
+    CET: 3,
+    RET: 3,
+    "HI-TENS": 4,
+    "HI-EMS": 2,
+    average: 8
+  },
+  {
+    day: "Wed",
+    CET: 4,
+    RET: 3,
+    "HI-TENS": 5,
+    "HI-EMS": 2,
+    average: 8
+  },
+  {
+    day: "Thu",
+    CET: 2,
+    RET: 2,
+    "HI-TENS": 3,
+    "HI-EMS": 1,
+    average: 8
+  }
 ]
 
 const modeData = [
@@ -150,30 +202,37 @@ export function DeviceActivity() {
               </button>
             </div>
             <div className="h-[200px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={treatmentData} margin={{ top: 0, right: 0, bottom: 0, left: -15 }}>
+              <ResponsiveContainer width="100%" height={200}>
+                <BarChart 
+                  data={treatmentData} 
+                  margin={{ top: 0, right: 0, bottom: 0, left: -15 }}
+                  barSize={20}
+                  maxBarSize={20}
+                >
                   <XAxis
                     dataKey="day"
-                    axisLine={false}
                     tickLine={false}
-                    tick={{ fontSize: 12, fill: '#6B7280' }}
+                    axisLine={false}
+                    fontSize={12}
+                    padding={{ left: 10, right: 10 }}
                   />
                   <YAxis
-                    axisLine={false}
                     tickLine={false}
-                    tick={{ fontSize: 12, fill: '#6B7280' }}
+                    axisLine={false}
+                    fontSize={12}
                   />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "white",
-                      border: "1px solid #e5e7eb",
-                      borderRadius: "0.5rem",
-                    }}
-                  />
-                  <Bar
-                    dataKey="treatments"
-                    fill="#F18841"
-                    radius={[4, 4, 0, 0]}
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="CET" stackId="a" fill="#F18841" />
+                  <Bar dataKey="RET" stackId="a" fill="#3B82F6" />
+                  <Bar dataKey="HI-TENS" stackId="a" fill="#06B6D4" />
+                  <Bar dataKey="HI-EMS" stackId="a" fill="#93C5FD" />
+                  <Line
+                    type="monotone"
+                    dataKey="average"
+                    stroke="#000"
+                    strokeDasharray="3 3"
+                    strokeWidth={2}
                   />
                 </BarChart>
               </ResponsiveContainer>
