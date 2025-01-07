@@ -807,6 +807,9 @@ video {
 .aspect-square {
   aspect-ratio: 1 / 1;
 }
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
 .h-10 {
   height: 2.5rem;
 }
@@ -1043,6 +1046,9 @@ video {
 }
 .max-w-\[400px\] {
   max-width: 400px;
+}
+.max-w-\[500px\] {
+  max-width: 500px;
 }
 .flex-1 {
   flex: 1 1 0%;
