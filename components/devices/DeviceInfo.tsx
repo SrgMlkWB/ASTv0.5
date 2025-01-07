@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
-import { ProtocolTable } from "./protocol-table"
 
 interface DeviceInfoProps {
   serialNumber: string
@@ -49,11 +48,6 @@ export function DeviceInfo({ serialNumber, version, config, type }: DeviceInfoPr
             </div>
           </CardContent>
         </Card>
-        
-        <div className="mt-8">
-          <h3 className="text-lg font-semibold mb-4">Current Protocol</h3>
-          <ProtocolTable />
-        </div>
       </div>
     </div>
   )

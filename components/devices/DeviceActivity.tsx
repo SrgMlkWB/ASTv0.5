@@ -21,6 +21,7 @@ import {
   Legend
 } from "recharts"
 import { ChartDetailModal } from "./ChartDetailModal"
+import { ProtocolTable } from "./protocol-table"
 
 const treatmentData = [
   {
@@ -121,7 +122,7 @@ export function DeviceActivity() {
   } | null>(null)
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <ChartDetailModal
         isOpen={!!selectedChart}
         onClose={() => setSelectedChart(null)}
@@ -397,6 +398,7 @@ export function DeviceActivity() {
           ))}
         </div>
       )}
+      <ProtocolTable />
     </div>
   )
 }

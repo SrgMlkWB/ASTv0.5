@@ -3,7 +3,7 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { DeviceInfo } from "./DeviceInfo"
 import { DeviceActivity } from "./DeviceActivity"
-import { ApplicationDomains } from "./application-domains"
+import { Protocols } from "./protocols"
 
 interface DeviceTabsProps {
   children?: React.ReactNode
@@ -33,7 +33,7 @@ export function DeviceTabs() {
           <DeviceInfo {...deviceInfo} />
         </TabsContent>
         <TabsContent value="protocols">
-          <ApplicationDomains />
+          <Protocols />
         </TabsContent>
         <TabsContent value="activity">
           <DeviceActivity />

@@ -28,19 +28,20 @@ const domains = [
 
 export function ApplicationDomains() {
   return (
-    <div className="space-y-6">
-      <div className="text-center max-w-2xl mx-auto mb-8">
-        <p className="text-muted-foreground">
+    <div className="max-w-4xl mx-auto px-4">
+      <div className="text-center mb-12">
+        <p className="text-muted-foreground leading-relaxed">
           Nous développons continuellement nos connaissances dans 4 domaines d'application avec un objectif: 
           vous permettre d'améliorer la vie de vos patients et clients, que vous soyez kinésithérapeute, 
           masseur, coach sportif, ostéopathe, chiropracteur, sage-femme, gynécologue, vétérinaire, spécialiste bien-être.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {domains.map((domain) => (
-          <Card key={domain.id} className="group cursor-pointer">
+          <Card key={domain.id} className="group hover:shadow-md transition-all duration-200">
             <CardContent className="p-6 flex flex-col items-center text-center space-y-4">
-              <div className="relative w-16 h-16">
+              <div className="relative w-16 h-16 mb-2">
                 <Image
                   src={domain.icon}
                   alt={domain.title}
@@ -48,7 +49,10 @@ export function ApplicationDomains() {
                   className="object-contain group-hover:scale-110 transition-transform duration-200"
                 />
               </div>
-              <h3 className="font-semibold text-lg">{domain.title}</h3>
+              <div>
+                <div className="text-sm text-muted-foreground mb-1">{domain.id}</div>
+                <h3 className="font-semibold text-lg">{domain.title}</h3>
+              </div>
             </CardContent>
           </Card>
         ))}
