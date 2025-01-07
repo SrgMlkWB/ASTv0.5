@@ -61,7 +61,7 @@ export function Navbar() {
       </nav>
 
       {/* Mobile Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-[#F18841] text-white md:hidden z-50">
+      <nav className="fixed bottom-0 left-0 right-0 bg-[#F18841] text-white md:hidden z-[100]">
         <div className="flex items-center justify-around h-16">
           {links.map((link) => {
             const Icon = link.icon
@@ -70,12 +70,12 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "flex flex-col items-center justify-center space-y-1 px-3 py-2 rounded-md text-xs font-medium hover:bg-white/10",
+                  "flex flex-col items-center justify-center space-y-1 px-3 py-2 rounded-md text-xs font-medium hover:bg-white/10 w-full",
                   pathname === link.href ? "bg-white/20" : ""
                 )}
               >
                 <Icon className="h-5 w-5" />
-                <span>{link.name}</span>
+                <span className="whitespace-nowrap">{link.name}</span>
               </Link>
             )
           })}

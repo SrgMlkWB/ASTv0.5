@@ -1,7 +1,8 @@
 "use client"
 
 import Image from "next/image"
-import { Card } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
+import { ProtocolTable } from "./protocol-table"
 
 interface DeviceInfoProps {
   serialNumber: string
@@ -25,50 +26,33 @@ export function DeviceInfo({ serialNumber, version, config, type }: DeviceInfoPr
       </div>
 
       <div className="space-y-4">
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-          <h3 className="text-gray-500 text-sm font-medium mb-2">Device</h3>
-          <p className="text-gray-900 font-semibold">Back4</p>
-        </div>
-
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
-          <h3 className="text-gray-500 text-sm font-medium mb-2">Serial number</h3>
-          <p className="text-gray-900 font-medium">{serialNumber}</p>
-        </div>
-
-        <div className="space-y-3">
-          <h3 className="text-[#F18841] text-sm font-medium px-4">SUB1</h3>
-          <div className="bg-white rounded-xl divide-y divide-gray-100 border border-gray-100">
-            <div className="p-4">
-              <h4 className="text-gray-500 text-sm font-medium mb-2">Config</h4>
-              <p className="text-gray-900">{config}</p>
+        <Card>
+          <CardContent className="p-6">
+            <h3 className="font-semibold mb-4">Device Information</h3>
+            <div className="space-y-2">
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Serial Number:</span>
+                <span className="font-medium">{serialNumber}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Version:</span>
+                <span className="font-medium">{version}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Config:</span>
+                <span className="font-medium">{config}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Type:</span>
+                <span className="font-medium">{type}</span>
+              </div>
             </div>
-            <div className="p-4">
-              <h4 className="text-gray-500 text-sm font-medium mb-2">Type</h4>
-              <p className="text-gray-900">{type}</p>
-            </div>
-            <div className="p-4">
-              <h4 className="text-gray-500 text-sm font-medium mb-2">Version</h4>
-              <p className="text-gray-900">{version}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <h3 className="text-[#F18841] text-sm font-medium px-4">SUB2</h3>
-          <div className="bg-white rounded-xl divide-y divide-gray-100 border border-gray-100">
-            <div className="p-4">
-              <h4 className="text-gray-500 text-sm font-medium mb-2">Config</h4>
-              <p className="text-gray-900">{config}</p>
-            </div>
-            <div className="p-4">
-              <h4 className="text-gray-500 text-sm font-medium mb-2">Type</h4>
-              <p className="text-gray-900">{type}</p>
-            </div>
-            <div className="p-4">
-              <h4 className="text-gray-500 text-sm font-medium mb-2">Version</h4>
-              <p className="text-gray-900">{version}</p>
-            </div>
-          </div>
+          </CardContent>
+        </Card>
+        
+        <div className="mt-8">
+          <h3 className="text-lg font-semibold mb-4">Current Protocol</h3>
+          <ProtocolTable />
         </div>
       </div>
     </div>

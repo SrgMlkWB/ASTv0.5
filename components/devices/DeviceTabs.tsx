@@ -3,7 +3,7 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { DeviceInfo } from "./DeviceInfo"
 import { DeviceActivity } from "./DeviceActivity"
-import { DeviceResources } from "./DeviceResources"
+import { ApplicationDomains } from "./application-domains"
 
 interface DeviceTabsProps {
   children?: React.ReactNode
@@ -23,8 +23,8 @@ export function DeviceTabs() {
         <div className="px-4">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="info">Info</TabsTrigger>
+            <TabsTrigger value="protocols">Protocols</TabsTrigger>
             <TabsTrigger value="activity">Activity</TabsTrigger>
-            <TabsTrigger value="resources">Resources</TabsTrigger>
           </TabsList>
         </div>
       </div>
@@ -32,11 +32,11 @@ export function DeviceTabs() {
         <TabsContent value="info">
           <DeviceInfo {...deviceInfo} />
         </TabsContent>
+        <TabsContent value="protocols">
+          <ApplicationDomains />
+        </TabsContent>
         <TabsContent value="activity">
           <DeviceActivity />
-        </TabsContent>
-        <TabsContent value="resources">
-          <DeviceResources />
         </TabsContent>
       </div>
     </Tabs>

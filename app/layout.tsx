@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/navbar"
-import { BottomNav } from "@/components/bottom-nav"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -26,12 +25,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col min-h-screen bg-background text-foreground">
+          <div className="flex flex-col min-h-screen bg-background text-foreground relative">
             <Navbar />
-            <main className="flex-grow pb-16 md:pb-0">
+            <main className="flex-grow pb-16 md:pb-0 relative z-0">
               {children}
             </main>
-            <BottomNav />
           </div>
         </ThemeProvider>
       </body>
