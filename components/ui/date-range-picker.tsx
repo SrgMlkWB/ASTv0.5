@@ -100,3 +100,5 @@ export function DateRangePicker({
     </div>
   )
 }
+
+export { DateRange }

@@ -84,7 +84,7 @@ export function Navbar() {
         </div>
       </nav>
       {/* Mobile Navigation Spacer */}
-      <div className="h-16 md:hidden" />
+      <div className="h-5 md:hidden" />
     </>
   )
 }

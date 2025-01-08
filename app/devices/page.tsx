@@ -15,7 +15,7 @@ export default function DevicesPage() {
           <div className="w-9" /> {/* Spacer to maintain layout balance */}
           <div className="w-9" /> {/* Spacer to maintain layout balance */}
           <FAQContactModal>
-            <Button variant="ghost" size="icon" className="h-9 w-9 -mt-1.5">
+            <Button variant="ghost" size="icon" className="h-12 w-12 -mt-1.5 -mr-1.5">
               <HelpCircle className="h-5 w-5" />
             </Button>
           </FAQContactModal>
