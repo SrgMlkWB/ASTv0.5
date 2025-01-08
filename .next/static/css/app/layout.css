@@ -1135,6 +1135,9 @@ video {
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
+.grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
 .flex-row {
   flex-direction: row;
 }
@@ -1568,6 +1571,10 @@ video {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
 .pb-16 {
   padding-bottom: 4rem;
 }
@@ -1665,6 +1672,9 @@ video {
 }
 .leading-relaxed {
   line-height: 1.625;
+}
+.leading-tight {
+  line-height: 1.25;
 }
 .tracking-tight {
   letter-spacing: -0.025em;
@@ -2152,6 +2162,10 @@ video {
 
 .focus-visible\:ring-offset-2:focus-visible {
   --tw-ring-offset-width: 2px;
+}
+
+.active\:bg-white\/10:active {
+  background-color: rgb(255 255 255 / 0.1);
 }
 
 .disabled\:pointer-events-none:disabled {
