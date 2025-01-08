@@ -68,8 +68,8 @@ export function ProtocolTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {protocolData.map((protocol, index) => (
-            <TableRow key={index}>
+          {protocolData.map((protocol) => (
+            <TableRow key={`${protocol.step}-${protocol.way}-${protocol.mode}`}>
               <TableCell>{protocol.step}</TableCell>
               <TableCell>{protocol.way}</TableCell>
               <TableCell>{protocol.mode}</TableCell>
