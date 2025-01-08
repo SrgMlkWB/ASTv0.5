@@ -179,7 +179,7 @@ export function DeviceActivity() {
       />
       <div className="flex flex-col space-y-4 px-4">
         <div className="flex justify-center">
-          <DateRangePicker className="w-full md:w-[300px]" />
+          <DateRangePicker onSelect={handleDateSelect} className="w-full md:w-[300px]" />
         </div>
         <div className="flex space-x-4">
           <Button
@@ -201,10 +201,6 @@ export function DeviceActivity() {
             Protocols
           </Button>
         </div>
-      </div>
-
-      <div className="bg-white rounded-lg p-4 border border-gray-100">
-        <DateRangePicker onSelect={handleDateSelect} />
       </div>
 
       {activeTab === "charts" ? (
@@ -318,7 +314,7 @@ export function DeviceActivity() {
                       dataKey="value"
                     >
                       {modeData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
+                        <Cell key={`mode-${entry.name}-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
                     <Tooltip
@@ -375,7 +371,7 @@ export function DeviceActivity() {
                       dataKey="value"
                     >
                       {accessoryData.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={entry.color} />
+                        <Cell key={`accessory-${entry.name}-${index}`} fill={entry.color} />
                       ))}
                     </Pie>
                     <Tooltip
