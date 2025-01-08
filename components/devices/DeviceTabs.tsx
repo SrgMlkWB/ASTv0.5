@@ -168,53 +168,65 @@ export function DeviceTabs() {
                   <Info className="h-5 w-5" />
                 </Button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-[450px] p-4" align="start">
-                <div className="flex justify-between items-start mb-4">
+              <HoverCardContent 
+                className="w-[90vw] md:w-[450px] p-4 bg-white rounded-xl border border-gray-200 shadow-lg" 
+                align="start"
+                sideOffset={8}
+              >
+                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-4">
                   <h3 className="text-lg font-bold">CARACTÉRISTIQUES {currentDevice.name}</h3>
                   <DeviceFAQ />
                 </div>
-                <div className="space-y-3 text-sm">
-                  <div>
+                <div className="space-y-4 text-sm">
+                  <div className="bg-gray-50 p-3 rounded-lg">
                     <span className="font-semibold">Puissance:</span> {currentDevice.specifications.puissance}
                   </div>
-                  <div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
                     <span className="font-semibold">Processeurs:</span> {currentDevice.specifications.processeurs}
                   </div>
-                  <div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
                     <span className="font-semibold">Fréquences:</span>
-                    <ul className="ml-4 mt-1">
+                    <ul className="ml-4 mt-2 space-y-1">
                       {Object.entries(currentDevice.specifications.frequences).map(([key, values]) => (
-                        <li key={key}>{key}: {values.join(", ")}</li>
+                        <li key={key} className="flex flex-col">
+                          <span className="font-medium">{key}:</span>
+                          <span className="text-gray-600">{values.join(", ")}</span>
+                        </li>
                       ))}
                     </ul>
                   </div>
-                  <div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
                     <span className="font-semibold">Modes:</span>
-                    <ul className="ml-4 mt-1">
+                    <ul className="ml-4 mt-2 space-y-1">
                       {currentDevice?.specifications?.modes && 
                         Object.entries(currentDevice.specifications.modes).map(([key, values]) => (
-                          <li key={key}>{key}: {values.join(", ")}</li>
+                          <li key={key} className="flex flex-col">
+                            <span className="font-medium">{key}:</span>
+                            <span className="text-gray-600">{values.join(", ")}</span>
+                          </li>
                         ))
                       }
                     </ul>
                   </div>
-                  <div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
                     <span className="font-semibold">Intensité CET, RET et MIX:</span> 
-                    {currentDevice?.specifications?.intensite ? currentDevice.specifications.intensite.join(", ") : "N/A"}
+                    <div className="mt-1 text-gray-600">
+                      {currentDevice?.specifications?.intensite ? currentDevice.specifications.intensite.join(", ") : "N/A"}
+                    </div>
                   </div>
-                  <div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
                     <span className="font-semibold">Normes:</span>
-                    <ul className="ml-4 mt-1">
+                    <ul className="ml-4 mt-2 space-y-1">
                       {currentDevice?.specifications?.normes?.map((norme, index) => (
-                        <li key={index}>{norme}</li>
+                        <li key={index} className="text-gray-600">{norme}</li>
                       ))}
                     </ul>
                   </div>
-                  <div>
+                  <div className="bg-gray-50 p-3 rounded-lg">
                     <span className="font-semibold">Inclus:</span>
-                    <ul className="ml-4 mt-1">
+                    <ul className="ml-4 mt-2 space-y-1">
                       {currentDevice?.specifications?.inclus?.map((item, index) => (
-                        <li key={index}>{item}</li>
+                        <li key={index} className="text-gray-600">{item}</li>
                       ))}
                     </ul>
                   </div>
