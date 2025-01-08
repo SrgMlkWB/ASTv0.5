@@ -99,51 +99,6 @@ const devices = [
     ]
   },
   {
-    name: "BACK4",
-    serialNumber: "B4-98765432",
-    version: "4.0",
-    config: "15.3",
-    type: "4",
-    specifications: {
-      puissance: "120W",
-      processeurs: "Quad core",
-      frequences: {
-        TECAR: ["300K Hz", "500K Hz", "1000K Hz", "1500K Hz"],
-        "Hi-TENS": ["2 Hz", "5 Hz", "25 Hz", "50 Hz"],
-        "Hi-EMS": ["1500 Hz", "4000 Hz", "6000 Hz"]
-      },
-      modes: {
-        CET: ["deep", "soft", "dynamic", "pulse"],
-        "Hi-TENS": ["static", "dynamic", "burst"],
-        "Hi-EMS": ["radial", "focal", "dynamic", "wave"]
-      },
-      intensite: ["low", "medium", "boost", "max"],
-      normes: [
-        "Fabriqué sous normes ISO13485",
-        "CE médical - MTIC 0068 - FDA-cleared",
-        "IEC 60601-1"
-      ],
-      inclus: [
-        "1 poignée TX Pro",
-        "13 électrodes :",
-        "5 CET",
-        "5 RET",
-        "1 Hi-RET Pro",
-        "2 multipolaires Pro",
-        "2 bracelets ergonomiques",
-        "1 câble splitter «Y» Pro",
-        "2 fixed pads Pro",
-        "1 câble TECAR mobile RET",
-        "1 câble TECAR mobile neutre",
-        "1 câble adhésif RET Pro",
-        "1 câble adhésif neutre Pro",
-        "1 poignée de retour Pro",
-        "1 plaque de retour Pro",
-        "1 chariot Premium"
-      ]
-    }
-  },
-  {
     name: "Hi-TENS",
     serialNumber: "HT-45678901",
     version: "2.5",
