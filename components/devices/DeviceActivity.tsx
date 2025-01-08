@@ -178,8 +178,9 @@ export function DeviceActivity() {
         title={selectedChart?.title || ""}
       />
       <div className="flex flex-col space-y-4 px-4">
-        <h2 className="text-2xl font-bold">Activité de l'appareil</h2>
-        <DateRangePicker className="w-full md:w-[300px]" />
+        <div className="flex justify-center">
+          <DateRangePicker className="w-full md:w-[300px]" />
+        </div>
         <div className="flex space-x-4">
           <Button
             variant="outline"
