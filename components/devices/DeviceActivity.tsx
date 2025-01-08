@@ -328,8 +328,8 @@ export function DeviceActivity() {
                 </ResponsiveContainer>
               </div>
               <div className="grid grid-cols-2 gap-4 mt-6">
-                {modeData.map((item, index) => (
-                  <div key={index} className="flex items-center space-x-2">
+                {modeData.map((item) => (
+                  <div key={`mode-legend-${item.name}`} className="flex items-center space-x-2">
                     <div
                       className="w-3 h-3 rounded-full"
                       style={{ backgroundColor: item.color }}
@@ -385,8 +385,8 @@ export function DeviceActivity() {
                 </ResponsiveContainer>
               </div>
               <div className="grid grid-cols-2 gap-4 mt-6">
-                {accessoryData.map((item, index) => (
-                  <div key={index} className="flex items-center space-x-2">
+                {accessoryData.map((item) => (
+                  <div key={`accessory-legend-${item.name}`} className="flex items-center space-x-2">
                     <div
                       className="w-3 h-3 rounded-full"
                       style={{ backgroundColor: item.color }}
