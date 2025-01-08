@@ -13,7 +13,7 @@ export default function DevicesPage() {
       <div className="sticky top-0 z-20 bg-background">
         <div className="flex items-center justify-between px-4 h-16">
           <div className="w-9" /> {/* Spacer to maintain layout balance */}
-          <span className="text-gray-600">My devices</span>
+          <div className="w-9" /> {/* Spacer to maintain layout balance */}
           <FAQContactModal>
             <Button variant="ghost" size="icon" className="h-9 w-9">
               <HelpCircle className="h-5 w-5" />
