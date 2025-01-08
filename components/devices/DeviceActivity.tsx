@@ -177,25 +177,29 @@ export function DeviceActivity() {
         data={selectedChart?.data || []}
         title={selectedChart?.title || ""}
       />
-      <div className="flex space-x-4">
-        <Button
-          variant="outline"
-          className={`flex-1 bg-white border-gray-200 hover:bg-gray-50 text-gray-900 font-medium ${
-            activeTab === "charts" ? "border-[#F18841] text-[#F18841]" : ""
-          }`}
-          onClick={() => setActiveTab("charts")}
-        >
-          Charts
-        </Button>
-        <Button
-          variant="outline"
-          className={`flex-1 bg-white border-gray-200 hover:bg-gray-50 text-gray-900 font-medium ${
-            activeTab === "protocols" ? "border-[#F18841] text-[#F18841]" : ""
-          }`}
-          onClick={() => setActiveTab("protocols")}
-        >
-          Protocols
-        </Button>
+      <div className="flex flex-col space-y-4 px-4">
+        <h2 className="text-2xl font-bold">Activité de l'appareil</h2>
+        <DateRangePicker className="w-full md:w-[300px]" />
+        <div className="flex space-x-4">
+          <Button
+            variant="outline"
+            className={`flex-1 bg-white border-gray-200 hover:bg-gray-50 text-gray-900 font-medium ${
+              activeTab === "charts" ? "border-[#F18841] text-[#F18841]" : ""
+            }`}
+            onClick={() => setActiveTab("charts")}
+          >
+            Charts
+          </Button>
+          <Button
+            variant="outline"
+            className={`flex-1 bg-white border-gray-200 hover:bg-gray-50 text-gray-900 font-medium ${
+              activeTab === "protocols" ? "border-[#F18841] text-[#F18841]" : ""
+            }`}
+            onClick={() => setActiveTab("protocols")}
+          >
+            Protocols
+          </Button>
+        </div>
       </div>
 
       <div className="bg-white rounded-lg p-4 border border-gray-100">

@@ -238,13 +238,7 @@ export function DeviceTabs() {
           />
         </TabsContent>
         <TabsContent value="activity" className="mt-4">
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold">Activité de l'appareil</h2>
-              <DateRangePicker className="w-[300px]" />
-            </div>
-            <DeviceActivity />
-          </div>
+          <DeviceActivity />
         </TabsContent>
         <TabsContent value="protocols">
           <DeviceRessources />
