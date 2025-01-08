@@ -11,7 +11,7 @@ export default function DevicesPage() {
   return (
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-20 bg-background">
-        <div className="flex items-center justify-between px-4 h-12">
+        <div className="flex items-center justify-between px-4 h-5 md:h-12">
           <div className="w-9" /> {/* Spacer to maintain layout balance */}
           <div className="w-9" /> {/* Spacer to maintain layout balance */}
           <FAQContactModal>
