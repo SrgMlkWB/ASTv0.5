@@ -66,7 +66,7 @@ export function DeviceInfo({
             </button>
           </>
         )}
-        <div className="w-[50vw] aspect-video">
+        <div className="w-full md:w-[50vw] aspect-video">
           <img
             src={getImageSrc(name)}
             alt={name}
