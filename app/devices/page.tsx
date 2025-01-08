@@ -11,11 +11,11 @@ export default function DevicesPage() {
   return (
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-20 bg-background">
-        <div className="flex items-center justify-between px-4 h-5 md:h-12">
+        <div className="flex items-center justify-between px-4 h-5">
           <div className="w-9" /> {/* Spacer to maintain layout balance */}
           <div className="w-9" /> {/* Spacer to maintain layout balance */}
           <FAQContactModal>
-            <Button variant="ghost" size="icon" className="h-9 w-9">
+            <Button variant="ghost" size="icon" className="h-9 w-9 -mt-1.5">
               <HelpCircle className="h-5 w-5" />
             </Button>
           </FAQContactModal>
