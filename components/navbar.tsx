@@ -93,34 +93,33 @@ export function Navbar() {
           </div>
         </div>
       </nav>
-
-      {/* Mobile Navigation */}
-      <nav className="fixed bottom-0 left-0 right-0 bg-[#F18841] text-white md:hidden z-50 shadow-lg">
-        <div className="grid grid-cols-6 h-16">
-          {links.map((link) => {
-            const Icon = link.icon;
-            return (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={`flex flex-col items-center justify-center w-full h-full px-1 transition-colors ${
-                  pathname === link.href ? "bg-white text-[#F18841]" : "text-white hover:bg-white/10"
-                }`}
-              >
-                <Icon className="h-6 w-6 mb-1" strokeWidth={2} />
-                <span className="text-[10px] font-medium leading-none whitespace-nowrap">{link.name}</span>
-              </Link>
-            );
-          })}
-          <button
-            onClick={() => setIsHelpOpen(true)}
-            className="flex flex-col items-center justify-center w-full h-full px-1 transition-colors hover:bg-white/10"
-          >
-            <HelpCircle className="h-6 w-6 mb-1" strokeWidth={2} />
-            <span className="text-[10px] font-medium leading-none whitespace-nowrap">Help</span>
-          </button>
-        </div>
-      </nav>
+{/* Mobile Navigation */}
+<nav className="fixed bottom-0 left-0 right-0 bg-[#F18841] text-white md:hidden z-50 shadow-lg">
+  <div className="flex justify-around h-16 w-full">
+    {links.map((link) => {
+      const Icon = link.icon;
+      return (
+        <Link
+          key={link.name}
+          href={link.href}
+          className={`flex flex-col items-center justify-center text-center flex-1 p-1 transition-colors ${
+            pathname === link.href ? "bg-white/20" : "hover:bg-white/10"
+          }`}
+        >
+          <Icon className="h-5 w-5" />
+          <span className="text-xs mt-1">{link.name}</span>
+        </Link>
+      );
+    })}
+    <button
+      onClick={() => setIsHelpOpen(true)}
+      className="flex flex-col items-center justify-center text-center flex-1 p-1 transition-colors hover:bg-white/10"
+    >
+      <HelpCircle className="h-5 w-5" />
+      <span className="text-xs mt-1">Help</span>
+    </button>
+  </div>
+</nav>
 
       {/* Mobile Navigation Spacer */}
       <div className="h-16 md:hidden" />
