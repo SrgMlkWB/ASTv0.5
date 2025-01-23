@@ -49,7 +49,7 @@ const errors: TroubleshootingError[] = [
     repair: "Check the power supply and ensure stable voltage.\n\n1. Check the power cord and connections.\n2. Ensure the device is properly plugged in.\n3. Check the voltage of the power supply.\n4. Replace the power supply if necessary."
   },
   {
-    code: "ERROR 237",
+    code: "ERROR 240",
     description: "TECAR IN OVER VOLTAGE",
     device: "BACK4",
     analysis: "1. Check the power supply.\n2. Ensure stable voltage.",

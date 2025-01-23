@@ -177,11 +177,11 @@ export default function HomePage() {
       <div className="px-4 mb-6">
         <h2 className="text-xl font-semibold text-gray-700 mb-4">Services</h2>
         <div className="flex flex-col gap-4">
-          <Link href="/assist">
+          {/* <Link href="/assist">
             <Button className="w-full bg-orange-400 hover:bg-orange-500 text-white py-6">
               Assistance
             </Button>
-          </Link>
+          </Link> */}
           <Link href="/academy">
             <Button className="w-full bg-orange-400 hover:bg-orange-500 text-white py-6">
               Academy

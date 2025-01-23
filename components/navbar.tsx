@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Home, Monitor, MessageSquare, GraduationCap, ShoppingCart, HelpCircle } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TroubleshootingGuide } from "@/components/troubleshooting-guide";
 import { ContactForm } from "@/components/contact-form";
@@ -14,7 +14,7 @@ import { ContactForm } from "@/components/contact-form";
 const links = [
   { name: "Home", href: "/", icon: Home },
   { name: "Devices", href: "/devices", icon: Monitor },
-  { name: "Assist", href: "/assist", icon: MessageSquare },
+  // { name: "Assist", href: "/assist", icon: MessageSquare },
   { name: "Academy", href: "/academy", icon: GraduationCap },
   { name: "Shop", href: "/shop", icon: ShoppingCart },
 ];
@@ -27,6 +27,9 @@ export function Navbar() {
     <>
       <Dialog open={isHelpOpen} onOpenChange={setIsHelpOpen}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogTitle className="text-xl font-semibold mb-4">
+            Help & Support
+          </DialogTitle>
           <Tabs defaultValue="troubleshooting" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="troubleshooting">Troubleshooting Guide</TabsTrigger>
