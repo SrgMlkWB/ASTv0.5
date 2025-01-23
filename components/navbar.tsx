@@ -3,8 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Home, Monitor, MessageSquare, GraduationCap, ShoppingCart } from "lucide-react";
+import { Home, Monitor, MessageSquare, GraduationCap, ShoppingCart, HelpCircle } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useState } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TroubleshootingGuide } from "@/components/troubleshooting-guide";
+import { ContactForm } from "@/components/contact-form";
 
 const links = [
   { name: "Home", href: "/", icon: Home },
@@ -16,9 +21,26 @@ const links = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   return (
     <>
+      <Dialog open={isHelpOpen} onOpenChange={setIsHelpOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <Tabs defaultValue="troubleshooting" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="troubleshooting">Troubleshooting Guide</TabsTrigger>
+              <TabsTrigger value="contact">Contact</TabsTrigger>
+            </TabsList>
+            <TabsContent value="troubleshooting">
+              <TroubleshootingGuide />
+            </TabsContent>
+            <TabsContent value="contact">
+              <ContactForm />
+            </TabsContent>
+          </Tabs>
+        </DialogContent>
+      </Dialog>
       {/* Desktop Navigation */}
       <nav className="bg-[#F18841] text-white hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,14 +78,22 @@ export function Navbar() {
                 })}
               </div>
             </div>
-            <ThemeToggle />
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setIsHelpOpen(true)}
+                className="flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-white/10"
+              >
+                <HelpCircle className="h-5 w-5" />
+              </button>
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </nav>
 
       {/* Mobile Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 bg-[#F18841] text-white md:hidden z-50 shadow-lg">
-        <div className="grid grid-cols-5 h-16">
+        <div className="grid grid-cols-6 h-16">
           {links.map((link) => {
             const Icon = link.icon;
             return (
@@ -79,6 +109,13 @@ export function Navbar() {
               </Link>
             );
           })}
+          <button
+            onClick={() => setIsHelpOpen(true)}
+            className="flex flex-col items-center justify-center w-full h-full px-1 transition-colors hover:bg-white/10"
+          >
+            <HelpCircle className="h-6 w-6 mb-1" strokeWidth={2} />
+            <span className="text-[10px] font-medium leading-none whitespace-nowrap">Help</span>
+          </button>
         </div>
       </nav>
 
