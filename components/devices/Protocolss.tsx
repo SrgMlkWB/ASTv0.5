@@ -4,33 +4,6 @@ import { Card } from "@/components/ui/card"
 import Image from "next/image"
 import { FileText } from "lucide-react"
 
-const domains = [
-  {
-    title: "Rééducation",
-    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
-    alt: "Rééducation avec Winback"
-  },
-  {
-    title: "Sport",
-    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
-    alt: "Sport avec Winback"
-  },
-  {
-    title: "Périnéo-Pelvien",
-    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
-    alt: "Périnéo-Pelvien avec Winback"
-  },
-  {
-    title: "Physio-Esthétique",
-    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
-    alt: "Physio-Esthétique avec Winback"
-  },
-  {
-    title: "Vétérinaire",
-    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
-    alt: "Vétérinaire avec Winback"
-  }
-]
 
 export function DeviceRessources() {
   return (
@@ -73,3 +46,31 @@ export function DeviceRessources() {
     </div>
   )
 }
+
+const domains = [
+  {
+    title: "Rééducation",
+    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
+    alt: "Rééducation avec Winback"
+  },
+  {
+    title: "Sport",
+    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
+    alt: "Sport avec Winback"
+  },
+  {
+    title: "Périnéo-Pelvien",
+    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
+    alt: "Périnéo-Pelvien avec Winback"
+  },
+  {
+    title: "Physio-Esthétique",
+    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
+    alt: "Physio-Esthétique avec Winback"
+  },
+  {
+    title: "Vétérinaire",
+    image: "https://winback-academy.org/wp-content/uploads/2022/11/WINBACK_09-10-21_Florian-Leger-275-scaled-1-1024x682.jpg",
+    alt: "Vétérinaire avec Winback"
+  }
+]

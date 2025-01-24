@@ -1,6 +1,6 @@
 {
-  "name": "ASSIST",
-  "short_name": "ASSIST",
+  "name": "WinbackASSIST",
+  "short_name": "WinbackASSIST",
   "description": "Winback ASSIST Application",
   "start_url": "/",
   "display": "standalone",
@@ -8,14 +8,16 @@
   "theme_color": "#F18841",
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/assets/icons/LogoWBrand.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "/assets/icons/LogoWBrand.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }

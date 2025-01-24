@@ -886,8 +886,17 @@ video {
 .h-px {
   height: 1px;
 }
+.h-\[calc\(80vh-100px\)\] {
+  height: calc(80vh - 100px);
+}
+.h-24 {
+  height: 6rem;
+}
 .max-h-\[90vh\] {
   max-height: 90vh;
+}
+.max-h-\[80vh\] {
+  max-height: 80vh;
 }
 .min-h-\[100px\] {
   min-height: 100px;
@@ -988,6 +997,9 @@ video {
 .w-80 {
   width: 20rem;
 }
+.w-96 {
+  width: 24rem;
+}
 .min-w-\[8rem\] {
   min-width: 8rem;
 }
@@ -1020,6 +1032,12 @@ video {
 }
 .max-w-sm {
   max-width: 24rem;
+}
+.max-w-\[800px\] {
+  max-width: 800px;
+}
+.max-w-\[600px\] {
+  max-width: 600px;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1498,6 +1516,10 @@ video {
 .bg-white\/30 {
   background-color: rgb(255 255 255 / 0.3);
 }
+.bg-yellow-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 179 8 / var(--tw-bg-opacity, 1));
+}
 .bg-\[url\(\'\/assets\/images\/cream-bg\.jpg\'\)\] {
   background-image: url('/assets/images/cream-bg.jpg');
 }
@@ -1632,6 +1654,9 @@ video {
 }
 .pt-4 {
   padding-top: 1rem;
+}
+.pr-4 {
+  padding-right: 1rem;
 }
 .text-left {
   text-align: left;
@@ -1812,6 +1837,13 @@ video {
 .text-white\/80 {
   color: rgb(255 255 255 / 0.8);
 }
+.text-yellow-500 {
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity, 1));
+}
+.underline {
+  text-decoration-line: underline;
+}
 .line-through {
   text-decoration-line: line-through;
 }
@@ -1948,6 +1980,12 @@ video {
   --tw-enter-rotate: initial;
   --tw-enter-translate-x: initial;
   --tw-enter-translate-y: initial;
+}
+.fade-in-0 {
+  --tw-enter-opacity: 0;
+}
+.zoom-in-95 {
+  --tw-enter-scale: .95;
 }
 .slide-in-from-top {
   --tw-enter-translate-y: -100%;
@@ -2108,6 +2146,11 @@ video {
 
 .hover\:bg-\[\#4169E1\]\/90:hover {
   background-color: rgb(65 105 225 / 0.9);
+}
+
+.hover\:bg-yellow-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 249 195 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-accent-foreground:hover {
@@ -2315,6 +2358,11 @@ video {
   background-color: hsl(var(--muted));
 }
 
+.data-\[state\=active\]\:bg-white[data-state="active"] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
 .data-\[state\=active\]\:text-foreground[data-state="active"] {
   color: hsl(var(--foreground));
 }
@@ -2325,6 +2373,11 @@ video {
 
 .data-\[state\=open\]\:text-muted-foreground[data-state="open"] {
   color: hsl(var(--muted-foreground));
+}
+
+.data-\[state\=active\]\:text-\[\#F18841\][data-state="active"] {
+  --tw-text-opacity: 1;
+  color: rgb(241 136 65 / var(--tw-text-opacity, 1));
 }
 
 .data-\[disabled\]\:opacity-50[data-disabled] {

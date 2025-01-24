@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "WinbackASSIST",
   description: "Medical device application",
+  icons: {
+    icon: '/assets/icons/LogoWBrand.png',
+    apple: '/assets/icons/LogoWBrand.png',
+  },
+  manifest: '/manifest.json',
 }
 
 export default function RootLayout({

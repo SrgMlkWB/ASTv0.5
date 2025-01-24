@@ -27,10 +27,25 @@ export function AcademyTabs() {
           </div>
         </div>
         <div className="px-2 sm:px-4 flex justify-center py-2">
-          <TabsList className="h-9 w-full sm:w-auto grid grid-cols-3 gap-1">
-            <TabsTrigger value="modules" className="text-xs sm:text-sm px-2 sm:px-3">Modules</TabsTrigger>
-            <TabsTrigger value="encours" className="text-xs sm:text-sm px-2 sm:px-3">En cours</TabsTrigger>
-            <TabsTrigger value="certification" className="text-xs sm:text-sm px-2 sm:px-3">Certification</TabsTrigger>
+          <TabsList className="h-9 w-full max-w-[400px] grid grid-cols-3 gap-1 bg-gray-100">
+            <TabsTrigger 
+              value="modules" 
+              className="text-sm px-3 data-[state=active]:bg-white data-[state=active]:text-[#F18841] transition-colors"
+            >
+              Modules
+            </TabsTrigger>
+            <TabsTrigger 
+              value="encours" 
+              className="text-sm px-3 data-[state=active]:bg-white data-[state=active]:text-[#F18841] transition-colors"
+            >
+              En cours
+            </TabsTrigger>
+            <TabsTrigger 
+              value="certification" 
+              className="text-sm px-3 data-[state=active]:bg-white data-[state=active]:text-[#F18841] transition-colors"
+            >
+              Certification
+            </TabsTrigger>
           </TabsList>
         </div>
       </div>
