@@ -25,6 +25,7 @@ import { ChartDetailModal } from "./ChartDetailModal";
 import { ProtocolTable } from "./protocol-table";
 import { DateRangePicker, DateRange } from "@/components/ui/date-range-picker";
 import { addDays } from "date-fns";
+import { Protocols } from "./Protocols";
 
 const treatmentData = [
   {
@@ -229,24 +230,25 @@ export function DeviceActivity() {
               }}
             >
               {/* Overlay pour assurer la lisibilité du texte */}
-              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-black/30" />
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="space-y-4 relative z-10"
               >
-                <div className="text-sm font-medium text-gray-900">Crème</div>
+                <div className="text-sm font-medium text-white">Crème</div>
                 <Progress value={creamRemainingPercentage} className="h-2" />
-                <div className="flex justify-between items-center text-sm text-gray-500">
+                <div className="flex justify-between items-center text-sm text-white">
                   <span>{Math.round(creamRemainingPercentage)}% restant</span>
                   <span>{Math.round(estimatedCreamUsage)}ml utilisés</span>
                 </div>
-                {creamRemainingPercentage < 20 && (
+                {creamRemainingPercentage < 70 && (
                   <Button 
                     variant="outline" 
                     size="sm" 
                     className="w-full mt-2 text-[#F18841] border-[#F18841] hover:bg-[#F18841] hover:text-white"
+                    onClick={() => window.open('https://www.winback.store/fr/cremes-et-gels-winback/10584-creme-conductrice-tecar-thermo-cryo-1000-ml-winback.html', '_blank')}
                   >
                     <ShoppingCart className="mr-2 h-4 w-4" />
                     Commander
@@ -256,24 +258,34 @@ export function DeviceActivity() {
             </div>
 
             {/* Section Plaques adhésives */}
-            <div className="bg-white rounded-xl p-6 border border-gray-100">
+            <div 
+              className="bg-white rounded-xl p-6 border border-gray-100 relative overflow-hidden"
+              style={{
+                backgroundImage: 'url("/assets/products/adhesif.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              {/* Overlay pour assurer la lisibilité du texte */}
+              <div className="absolute inset-0 bg-black/30" />
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="space-y-4"
+                className="space-y-4 relative z-10"
               >
-                <div className="text-sm font-medium text-gray-900">Plaques adhésives</div>
+                <div className="text-sm font-medium text-white">Plaques adhésives</div>
                 <Progress value={adhesivePadsRemainingPercentage} className="h-2" />
-                <div className="flex justify-between items-center text-sm text-gray-500">
+                <div className="flex justify-between items-center text-sm text-white">
                   <span>{Math.round(adhesivePadsRemainingPercentage)}% restant</span>
                   <span>{adhesivePadsUsed}/{adhesivePadsPerPack} utilisées</span>
                 </div>
-                {adhesivePadsRemainingPercentage < 20 && (
+                {adhesivePadsRemainingPercentage < 70 && (
                   <Button 
                     variant="outline" 
                     size="sm" 
                     className="w-full mt-2 text-[#F18841] border-[#F18841] hover:bg-[#F18841] hover:text-white"
+                    onClick={() => window.open('https://www.winback.store/fr/accessoires-winback/10582-lot-de-5-plaques-de-retour-adhesives-rs25-winback.html', '_blank')}
                   >
                     <ShoppingCart className="mr-2 h-4 w-4" />
                     Commander
@@ -291,7 +303,7 @@ export function DeviceActivity() {
                 className="text-center"
               >
                 <div className="text-4xl font-bold text-gray-900">263</div>
-                <div className="text-sm text-gray-500 mt-1">minutes</div>
+                <div className="text-sm text-gray-500 mt-1">minutes cette semaine</div>
               </motion.div>
             </div>
             <div className="bg-white rounded-xl p-6 border border-gray-100">
@@ -302,7 +314,7 @@ export function DeviceActivity() {
                 className="text-center"
               >
                 <div className="text-4xl font-bold text-gray-900">19</div>
-                <div className="text-sm text-gray-500 mt-1">Treatments</div>
+                <div className="text-sm text-gray-500 mt-1">traitements cette semaine</div>
               </motion.div>
             </div>
           </div>
@@ -476,21 +488,25 @@ export function DeviceActivity() {
           </div>
         </div>
       ) : (
-        <div className="p-4 space-y-6">
-          <Card className="card p-6">
-            <h2 className="text-2xl font-bold mb-4">Nos domaines d'application</h2>
-            <p className="mb-4">
-              Nous développons continuellement nos connaissances dans 4 domaines d'application avec un objectif: vous permettre d'améliorer la vie de vos patients et clients, que vous soyez kinésithérapeute, masseur, coach sportif, ostéopathe, chiropracteur, sage-femme, gynécologue, vétérinaire, spécialiste bien-être.
-            </p>
-            <ul className="list-disc pl-5">
-              <li>Rééducation</li>
-              <li>Sport</li>
-              <li>Wo(men)</li>
-              <li>Équin & petits animaux</li>
-            </ul>
-          </Card>
+        <div className="px-4">
+          <Protocols />
         </div>
       )}
     </div>
   );
 }
+
+
+// <div className="p-4 space-y-6">
+// <Card className="card p-6">
+//   <h2 className="text-2xl font-bold mb-4">Nos domaines d'application</h2>
+//   <p className="mb-4">
+//     Nous développons continuellement nos connaissances dans 4 domaines d'application avec un objectif: vous permettre d'améliorer la vie de vos patients et clients, que vous soyez kinésithérapeute, masseur, coach sportif, ostéopathe, chiropracteur, sage-femme, gynécologue, vétérinaire, spécialiste bien-être.
+//   </p>
+//   <ul className="list-disc pl-5">
+//     <li>Rééducation</li>
+//     <li>Sport</li>
+//     <li>Wo(men)</li>
+//     <li>Équin & petits animaux</li>
+//   </ul>
+// </Card>

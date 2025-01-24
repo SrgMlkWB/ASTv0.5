@@ -39,11 +39,11 @@ export function DeviceRessources() {
         <FileText className="h-5 w-5 text-[#F18841] mr-2" />
         <span className="text-lg font-semibold">WINBACK BACK4 MANUEL UTILISATEUR</span>
       </div>
-      <iframe
+      {/* <iframe
         src="https://www.manualslib.fr/manual/637603/Winback-Back4.html"
         className="w-full h-[calc(100vh-200px)] border-none"
         title="WINBACK BACK4 MANUEL UTILISATEUR"
-      />
+      /> */}
       <div>
         <h2 className="text-2xl font-bold mb-2">Nos domaines d'application</h2>
         <p className="text-gray-600 mb-6">
