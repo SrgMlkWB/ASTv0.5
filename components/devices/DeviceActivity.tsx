@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2, ShoppingCart } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   BarChart,
@@ -161,6 +162,18 @@ export function DeviceActivity() {
     title: string;
   } | null>(null);
 
+  // Calcul de la consommation de crème (5ml toutes les 5mn)
+  const totalMinutes = 263; // Exemple de temps total
+  const creamUsagePerFiveMin = 5; // ml par 5 minutes
+  const estimatedCreamUsage = Math.round((totalMinutes / 5) * creamUsagePerFiveMin);
+  const creamContainerSize = 1000; // ml
+  const creamRemainingPercentage = 100 - ((estimatedCreamUsage % creamContainerSize) / creamContainerSize * 100);
+
+  // Exemple pour les plaques adhésives
+  const adhesivePadsUsed = 4; // À remplacer par la vraie logique de détection
+  const adhesivePadsPerPack = 10;
+  const adhesivePadsRemainingPercentage = ((adhesivePadsPerPack - adhesivePadsUsed) / adhesivePadsPerPack) * 100;
+
   const handleDateSelect = (range: DateRange | undefined) => {
     if (range) {
       setSelectedDate(range);
@@ -205,12 +218,76 @@ export function DeviceActivity() {
 
       {activeTab === "charts" ? (
         <div className="space-y-6">
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-white rounded-xl p-6 border border-gray-100">
+          <div className="grid grid-cols-4 gap-4">
+            {/* Section Crème */}
+            <div 
+              className="bg-white rounded-xl p-6 border border-gray-100 relative overflow-hidden"
+              style={{
+                backgroundImage: 'url("/assets/images/WBcreme.png")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              {/* Overlay pour assurer la lisibilité du texte */}
+              <div className="absolute inset-0 bg-black/20" />
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
+                className="space-y-4 relative z-10"
+              >
+                <div className="text-sm font-medium text-gray-900">Crème</div>
+                <Progress value={creamRemainingPercentage} className="h-2" />
+                <div className="flex justify-between items-center text-sm text-gray-500">
+                  <span>{Math.round(creamRemainingPercentage)}% restant</span>
+                  <span>{Math.round(estimatedCreamUsage)}ml utilisés</span>
+                </div>
+                {creamRemainingPercentage < 20 && (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full mt-2 text-[#F18841] border-[#F18841] hover:bg-[#F18841] hover:text-white"
+                  >
+                    <ShoppingCart className="mr-2 h-4 w-4" />
+                    Commander
+                  </Button>
+                )}
+              </motion.div>
+            </div>
+
+            {/* Section Plaques adhésives */}
+            <div className="bg-white rounded-xl p-6 border border-gray-100">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="space-y-4"
+              >
+                <div className="text-sm font-medium text-gray-900">Plaques adhésives</div>
+                <Progress value={adhesivePadsRemainingPercentage} className="h-2" />
+                <div className="flex justify-between items-center text-sm text-gray-500">
+                  <span>{Math.round(adhesivePadsRemainingPercentage)}% restant</span>
+                  <span>{adhesivePadsUsed}/{adhesivePadsPerPack} utilisées</span>
+                </div>
+                {adhesivePadsRemainingPercentage < 20 && (
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full mt-2 text-[#F18841] border-[#F18841] hover:bg-[#F18841] hover:text-white"
+                  >
+                    <ShoppingCart className="mr-2 h-4 w-4" />
+                    Commander
+                  </Button>
+                )}
+              </motion.div>
+            </div>
+
+            {/* Minutes et Treatments existants */}
+            <div className="bg-white rounded-xl p-6 border border-gray-100">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-center"
               >
                 <div className="text-4xl font-bold text-gray-900">263</div>
@@ -221,7 +298,7 @@ export function DeviceActivity() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
                 className="text-center"
               >
                 <div className="text-4xl font-bold text-gray-900">19</div>

@@ -37,7 +37,7 @@ export function DeviceInfo({
   const getImageSrc = (deviceName: string) => {
     switch(deviceName.toLowerCase()) {
       case "back4":
-        return "/assets/devices/BACK4.jpg"
+        return "/assets/images/Back4/1BACK4.png"
       case "back3tx":
         return "/assets/devices/BACK3TX.jpg"
       case "hi-tens":

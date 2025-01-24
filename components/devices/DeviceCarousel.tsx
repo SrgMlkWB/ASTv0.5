@@ -20,7 +20,7 @@ const devices: Device[] = [
   {
     id: "back4",
     name: "BACK4",
-    image: "/assets/devices/BACK4.jpg",
+    image: "/assets/images/Back4/1BACK4.png",
     version: "3.15",
     serialNumber: "16578647U8O9P8",
     config: "12.2",

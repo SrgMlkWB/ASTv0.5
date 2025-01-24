@@ -46,7 +46,7 @@ const myDevices = [
   {
     name: "BACK4",
     version: "Version 3.15",
-    image: "/assets/devices/BACK4.jpg"
+    image: "/assets/images/Back4/1BACK4.png"
   },
   {
     name: "BACK3TX",
@@ -59,7 +59,7 @@ const allDevices = [
   {
     name: "BACK4",
     version: "Version 3.15",
-    image: "/assets/devices/BACK4.jpg"
+    image: "/assets/images/Back4/1BACK4.png"
   },
   {
     name: "BACK3TX",
