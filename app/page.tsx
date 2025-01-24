@@ -79,26 +79,33 @@ export default function HomePage() {
   const [isProfileOpen, setIsProfileOpen] = useState(false)
 
   return (
-    <main className="flex-1 overflow-y-auto">
-      <div className="flex items-center justify-between p-4 relative">
+    <main className="flex-1 overflow-y-auto pb-16 md:pb-0">
+      <div className="flex items-center justify-between p-2 md:p-4 relative">
         <button 
           onClick={() => setIsProfileOpen(true)}
-          className="w-15 h-15 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors overflow-hidden"
+          className="w-12 h-12 md:w-15 md:h-15 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors overflow-hidden"
         >
           <Image
-            src="/assets/images/LogoWBrond.png"
+            src="/assets/images/LogoWBrand.png"
             alt="Profile"
-            width={52}
-            height={52}
+            width={48}
+            height={48}
             className="object-cover"
           />
         </button>
+        <h1 className="pl-2 md:pl-4 flex-1 text-lg md:text-xl font-bold">Bienvenue, John!</h1>
         <div className="flex items-center gap-4">
           <button 
             onClick={() => setIsSearchOpen(true)}
             className="p-2 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <Search className="w-6 h-6 text-gray-500" />
+            <Image
+              src="/assets/images/LogoLoupe.png"
+              alt="Search"
+              width={34}
+              height={34}
+              className="text-gray-500"
+            />
           </button>
           <NotificationsPopover />
         </div>
@@ -110,14 +117,14 @@ export default function HomePage() {
       </div>
 
       {/* Promotional Carousel */}
-      <div className="px-4 mb-6">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4">Nos Promotions</h2>
+      <div className="px-2 md:px-4 mb-4 md:mb-6">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-700 mb-3 md:mb-4">Nos Promotions</h2>
         <div className="relative">
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 hide-scrollbar">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-3 md:gap-4 pb-3 md:pb-4 hide-scrollbar">
             {promotionalProducts.map((product) => (
               <div 
                 key={product.id} 
-                className="flex-none w-3/4 md:w-1/4 snap-center"
+                className="flex-none w-[280px] md:w-1/4 snap-center"
                 onClick={() => setSelectedDevice({
                   name: product.name,
                   version: "Version 3.15", // Using the default version from allDevices
@@ -150,14 +157,14 @@ export default function HomePage() {
       </div>
 
       {/* My Devices Section */}
-      <div className="px-4 mb-6">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-semibold text-gray-700">My devices ({myDevices.length})</h2>
-          <Link href="/devices" className="text-orange-500 flex items-center hover:underline">
+      <div className="px-2 md:px-4 mb-4 md:mb-6">
+        <div className="flex items-center justify-between mb-3 md:mb-4">
+          <h2 className="text-lg md:text-xl font-semibold text-gray-700">My devices ({myDevices.length})</h2>
+          <Link href="/devices" className="text-orange-500 text-sm md:text-base flex items-center hover:underline">
             See all 
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3 md:gap-4">
           {myDevices.map((device) => (
             <Card 
               key={device.name} 
@@ -182,9 +189,9 @@ export default function HomePage() {
       </div>
 
       {/* Services Section */}
-      <div className="px-4 mb-6">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4">Services</h2>
-        <div className="flex flex-col gap-4">
+      <div className="px-2 md:px-4 mb-4 md:mb-6">
+        <h2 className="text-lg md:text-xl font-semibold text-gray-700 mb-3 md:mb-4">Services</h2>
+        <div className="flex flex-col gap-3 md:gap-4">
           {/* <Link href="/assist">
             <Button className="w-full bg-orange-400 hover:bg-orange-500 text-white py-6">
               Assistance

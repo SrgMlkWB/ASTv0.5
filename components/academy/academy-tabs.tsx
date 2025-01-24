@@ -11,25 +11,27 @@ export function AcademyTabs() {
   return (
     <Tabs defaultValue="modules" className="w-full">
       <div className="sticky top-0 z-10 bg-background">
-        <div className="flex justify-center py-4">
-          <Image
-            src="/assets/images/LogoAcademy.png"
-            alt="Academy Logo"
-            width={200}
-            height={80}
-            priority
-            className="object-contain"
-          />
+        <div className="flex justify-between items-center py-4 px-2 sm:px-4">
+          <div className="flex-1 flex justify-center">
+            <Image
+              src="/assets/images/LogoAcademy.png"
+              alt="Academy Logo"
+              width={200}
+              height={80}
+              priority
+              className="object-contain"
+            />
+          </div>
+          <div>
+            <FaqPopover />
+          </div>
         </div>
-        <div className="px-2 sm:px-4 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 py-2">
+        <div className="px-2 sm:px-4 flex justify-center py-2">
           <TabsList className="h-9 w-full sm:w-auto grid grid-cols-3 gap-1">
             <TabsTrigger value="modules" className="text-xs sm:text-sm px-2 sm:px-3">Modules</TabsTrigger>
             <TabsTrigger value="encours" className="text-xs sm:text-sm px-2 sm:px-3">En cours</TabsTrigger>
             <TabsTrigger value="certification" className="text-xs sm:text-sm px-2 sm:px-3">Certification</TabsTrigger>
           </TabsList>
-          <div className="self-end sm:self-auto">
-            <FaqPopover />
-          </div>
         </div>
       </div>
       <div className="px-2 sm:px-4 py-4 sm:py-6">

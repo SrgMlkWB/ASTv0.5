@@ -6,6 +6,7 @@ import { Input } from "../ui/input"
 import { useShop } from "@/context/shop-context"
 import { Badge } from "../ui/badge"
 import { NotificationsPopover } from "@/components/notifications/notifications-popover"
+import Image from "next/image"
 
 export function ShopHeader() {
   const { 
@@ -21,7 +22,14 @@ export function ShopHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between px-4">
         <div className="flex items-center space-x-4">
-          <h1 className="text-2xl font-bold">Winback Shop</h1>
+          <Image
+            src="/assets/images/LogoStore.png"
+            alt="Winback Shop"
+            width={150}
+            height={60}
+            priority
+            className="object-contain"
+          />
         </div>
         <div className="flex-1 mx-8">
           <div className="relative">
