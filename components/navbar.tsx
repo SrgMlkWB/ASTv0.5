@@ -14,9 +14,9 @@ import { ContactForm } from "@/components/contact-form";
 const links = [
   { name: "Home", href: "/", icon: Home },
   { name: "Devices", href: "/devices", icon: Monitor },
-  // { name: "Assist", href: "/assist", icon: MessageSquare },
   { name: "Academy", href: "/academy", icon: GraduationCap },
   { name: "Shop", href: "/shop", icon: ShoppingCart },
+    // { name: "Assist", href: "/assist", icon: MessageSquare },
 ];
 
 export function Navbar() {
