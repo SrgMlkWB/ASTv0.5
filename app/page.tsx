@@ -83,8 +83,16 @@ export default function HomePage() {
       <div className="flex items-center justify-between p-4 relative">
         <button 
           onClick={() => setIsProfileOpen(true)}
-          className="w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
-        />
+          className="w-15 h-15 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors overflow-hidden"
+        >
+          <Image
+            src="/assets/images/LogoWBrond.png"
+            alt="Profile"
+            width={52}
+            height={52}
+            className="object-cover"
+          />
+        </button>
         <div className="flex items-center gap-4">
           <button 
             onClick={() => setIsSearchOpen(true)}

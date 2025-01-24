@@ -3,6 +3,7 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { LogOut, Settings, User } from "lucide-react"
+import Image from "next/image"
 
 export function ProfileModal({
   isOpen,
@@ -16,8 +17,15 @@ export function ProfileModal({
       <DialogContent className="max-w-full h-[100dvh] p-0 gap-0 rounded-none md:max-w-md md:h-auto md:rounded-lg">
         <div className="p-4 space-y-6">
           <div className="flex items-center space-x-4">
-            <div className="w-16 h-16 rounded-full bg-gray-200 flex items-center justify-center">
-              <User className="w-8 h-8 text-gray-500" />
+            <div className="w-16 h-16 rounded-full overflow-hidden">
+              <Image
+                src="/assets/images/LogoWBrond.png"
+                alt="Profile"
+                width={64}
+                height={64}
+                priority
+                className="object-cover w-full h-full"
+              />
             </div>
             <div>
               <h2 className="font-semibold">John Doe</h2>

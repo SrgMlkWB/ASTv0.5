@@ -776,6 +776,9 @@ video {
 .mt-8 {
   margin-top: 2rem;
 }
+.mr-4 {
+  margin-right: 1rem;
+}
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -886,6 +889,9 @@ video {
 }
 .h-px {
   height: 1px;
+}
+.h-12 {
+  height: 3rem;
 }
 .max-h-\[90vh\] {
   max-height: 90vh;
@@ -1444,6 +1450,10 @@ video {
 }
 .bg-white\/80 {
   background-color: rgb(255 255 255 / 0.8);
+}
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity, 1));
 }
 .bg-cover {
   background-size: cover;

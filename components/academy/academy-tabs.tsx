@@ -2,6 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card } from "@/components/ui/card"
+import Image from "next/image"
 import { ModuleCategories } from "./module-categories"
 import { BeginnerModule } from "./modules/beginner-module"
 import { FaqPopover } from "./faq-popover"
@@ -10,6 +11,16 @@ export function AcademyTabs() {
   return (
     <Tabs defaultValue="modules" className="w-full">
       <div className="sticky top-0 z-10 bg-background">
+        <div className="flex justify-center py-4">
+          <Image
+            src="/assets/images/LogoAcademy.png"
+            alt="Academy Logo"
+            width={200}
+            height={80}
+            priority
+            className="object-contain"
+          />
+        </div>
         <div className="px-2 sm:px-4 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-2 sm:space-y-0 py-2">
           <TabsList className="h-9 w-full sm:w-auto grid grid-cols-3 gap-1">
             <TabsTrigger value="modules" className="text-xs sm:text-sm px-2 sm:px-3">Modules</TabsTrigger>
