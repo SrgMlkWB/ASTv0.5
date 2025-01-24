@@ -4,7 +4,12 @@ import * as React from "react"
 import { addDays, format } from "date-fns"
 import { fr } from "date-fns/locale"
 import { Calendar as CalendarIcon } from "lucide-react"
-import { DateRange } from "react-day-picker"
+import { type SelectRangeEventHandler } from "react-day-picker"
+
+export interface DateRange {
+  from: Date
+  to?: Date
+}
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -78,7 +83,6 @@ export function DateRangePicker({
               day_today: "bg-accent text-accent-foreground",
               day: "h-9 w-9 p-0 font-normal aria-selected:opacity-100",
               day_disabled: "text-muted-foreground opacity-50",
-              day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
               day_hidden: "invisible",
               caption: "flex justify-center pt-1 relative items-center",
               caption_label: "text-sm font-medium",
@@ -100,5 +104,3 @@ export function DateRangePicker({
     </div>
   )
 }
-
-export { DateRange }
